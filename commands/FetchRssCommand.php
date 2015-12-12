@@ -63,16 +63,21 @@ class FetchRssCommand extends Command
 
                     $this->getOutput()->writeln($itemCount . '. ' . $item->getTitle());
 
-                    Item::updateOrCreate(['item_id' => $item->getId()], [
+                    $data = [
                         'source_id' => $source->getAttribute('id'),
                         'title' => $item->getTitle(),
                         'link' => $item->getLink(),
                         'description' => $item->getDescription(),
-                        'author' => implode(', ', $item->getAuthors()->getValues()),
                         'category' => implode(', ', $item->getCategories()->getValues()),
                         'comments' => $item->getCommentLink(),
                         'pub_date' => $item->getDateCreated()
-                    ]);
+                    ];
+
+                    if ($item->getAuthors() !== null && is_array($item->getAuthors())) {
+                        $data['author'] = implode(', ', $item->getAuthors());
+                    }
+
+                    Item::updateOrCreate(['item_id' => $item->getId()], $data);
 
                     if ($maxItems > 0 && $itemCount >= $maxItems) {
                         break;
