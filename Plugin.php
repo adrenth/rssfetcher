@@ -3,6 +3,7 @@
 namespace Adrenth\RssFetcher;
 
 use Adrenth\RssFetcher\Commands\FetchRssCommand;
+use Adrenth\RssFetcher\Components\Items;
 use Backend;
 use System\Classes\PluginBase;
 
@@ -33,6 +34,16 @@ class Plugin extends PluginBase
     public function register()
     {
         $this->registerConsoleCommand('Adrenth.RssFetcher', FetchRssCommand::class);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function registerComponents()
+    {
+        return [
+            Items::class => 'rssItems'
+        ];
     }
 
     /**

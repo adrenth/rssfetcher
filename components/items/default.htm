@@ -1,0 +1,20 @@
+<h1>Headlines</h1>
+{% for item in __SELF__.items %}
+    <p><strong>{{ item.source }} - <a href="{{ item.link }}" target="_blank">{{ item.title }}</a></strong></p>
+
+    <p>Publish date: {{ item.pub_date|date('Y-m-d H:i:s') }}</p>
+
+    <p>{{ item.description }}</p>
+
+    {% if item.author %}
+        <em>{{ item.author }}</em>
+    {% endif %}
+
+    {% if item.category %}
+        <p>Category: {{ item.category }}</p>
+    {% endif %}
+
+    {% if item.comments %}
+        <a href="{{ item.comments }}" target="_blank">Read comments</a>
+    {% endif %}
+{% endfor %}
