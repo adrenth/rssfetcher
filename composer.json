@@ -1,0 +1,29 @@
+{
+    "name": "adrenth/rss-fetcher",
+    "description": "Fetches RSS headlines from various sources to put on your website",
+    "type": "october-plugin",
+    "keywords": ["october", "cms", "rss", "plugin"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alwin Drenth",
+            "email": "adrenth@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": "~1.0",
+        "zendframework/zend-feed": "^2.6",
+        "zendframework/zend-http": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Adrenth\\RssFetcher\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

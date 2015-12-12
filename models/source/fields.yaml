@@ -1,0 +1,28 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: Name
+        type: text
+        span: left
+    source_url:
+        label: Source URL
+        type: text
+        placeholder: http://example.com/rss.xml
+        span: right
+    description:
+        label: Description
+        type: textarea
+        size: small
+    max_items:
+        label: Max Items
+        comment: Maximum items to fetch from source
+        default: 10
+        span: left
+    is_enabled:
+        label: Enabled
+        type: switch
+        comment: Flick this switch to enable this RSS source
+        span: left

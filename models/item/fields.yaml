@@ -1,0 +1,28 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    title:
+        label: Title
+        type: text
+    link:
+        label: Link
+        type: text
+    description:
+        label: Description
+        type: textarea
+        size: small
+    author:
+        label: Author
+        type: text
+    category:
+        label: Category
+        type: text
+    comments:
+        label: Comments
+        type: text
+    pub_date:
+        label: Publish date
+        type: datepicker
+        mode: datetime

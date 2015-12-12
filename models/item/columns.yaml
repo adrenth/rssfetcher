@@ -1,0 +1,24 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    source:
+        label: Source
+        searchable: true
+        relation: source
+        select: name
+    title:
+        label: Title
+        searchable: true
+        type: text
+    author:
+        label: Author
+        searchable: true
+        type: text
+    pub_date:
+        label: Published at
+        type: datetime
+    item_id:
+        label: ID
+        type: text

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Item
+
+# Model Form Field configuration
+form: $/adrenth/rssfetcher/models/item/fields.yaml
+
+# Model Class name
+modelClass: Adrenth\RssFetcher\Models\Item
+
+# Default redirect location
+defaultRedirect: adrenth/rssfetcher/items
+
+# Create page
+create:
+    title: Create Item
+    redirect: adrenth/rssfetcher/items/update/:id
+    redirectClose: adrenth/rssfetcher/items
+
+# Update page
+update:
+    title: Edit Item
+    redirect: adrenth/rssfetcher/items
+    redirectClose: adrenth/rssfetcher/items
+
+# Preview page
+preview:
+    title: Preview Item

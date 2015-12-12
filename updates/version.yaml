@@ -1,0 +1,5 @@
+1.0.1:
+  - First version of RssFetcher
+  - create_sources_table.php
+  - create_items_table.php
+  - seed_sources_table.php
