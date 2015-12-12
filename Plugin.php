@@ -23,7 +23,7 @@ class Plugin extends PluginBase
             'description' => 'Fetches RSS items from various sources to put on your website',
             'author' => 'A. Drenth <adrenth@gmail.com>',
             'icon' => 'icon-rss',
-            'homepage' => 'http://github.com/adrenth/rss-fetcher'
+            'homepage' => 'http://github.com/adrenth/rssfetcher'
         ];
     }
 
