@@ -67,7 +67,7 @@ class FetchRssCommand extends Command
                         'source_id' => $source->getAttribute('id'),
                         'title' => $item->getTitle(),
                         'link' => $item->getLink(),
-                        'description' => $item->getDescription(),
+                        'description' => strip_tags($item->getDescription()),
                         'category' => implode(', ', $item->getCategories()->getValues()),
                         'comments' => $item->getCommentLink(),
                         'pub_date' => $item->getDateCreated()
