@@ -3,3 +3,4 @@
   - create_sources_table.php
   - create_items_table.php
   - seed_sources_table.php
+1.0.2: Add RSS Headlines dashboard widget
