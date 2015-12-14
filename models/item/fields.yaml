@@ -6,9 +6,11 @@ fields:
     title:
         label: Title
         type: text
+        span: left
     link:
         label: Link
         type: text
+        span: right
     description:
         label: Description
         type: textarea
@@ -16,9 +18,11 @@ fields:
     author:
         label: Author
         type: text
+        span: left
     category:
         label: Category
         type: text
+        span: right
     comments:
         label: Comments
         type: text
