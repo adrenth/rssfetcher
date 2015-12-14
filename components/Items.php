@@ -47,26 +47,30 @@ class Items extends ComponentBase
      */
     public function onRun()
     {
-        $this->items = $this->page['items'] = $this->listItems();
+        $this->items = $this->page['items'] = self::loadItems($this->property('maxItems'));
     }
 
     /**
      * List Items
      *
+     * @param int $maxItems
      * @return array|static[]
-     * @throws \InvalidArgumentException
      */
-    protected function listItems()
+    public static function loadItems($maxItems = 10)
     {
-        $items = \Db::table('adrenth_rssfetcher_items')
-            ->select([
-                'adrenth_rssfetcher_items.*',
-                'adrenth_rssfetcher_sources.name AS source'
-            ])
-            ->join('adrenth_rssfetcher_sources', 'adrenth_rssfetcher_items.source_id', '=', 'adrenth_rssfetcher_sources.id')
-            ->where('adrenth_rssfetcher_sources.is_enabled', '=', 1)
-            ->orderBy('adrenth_rssfetcher_items.pub_date')
-            ->limit($this->property('maxItems'));
+        try {
+            $items = \Db::table('adrenth_rssfetcher_items')
+                ->select([
+                    'adrenth_rssfetcher_items.*',
+                    'adrenth_rssfetcher_sources.name AS source'
+                ])
+                ->join('adrenth_rssfetcher_sources', 'adrenth_rssfetcher_items.source_id', '=', 'adrenth_rssfetcher_sources.id')
+                ->where('adrenth_rssfetcher_sources.is_enabled', '=', 1)
+                ->orderBy('adrenth_rssfetcher_items.pub_date', 'desc')
+                ->limit($maxItems);
+        } catch (\InvalidArgumentException $e) {
+            return [];
+        }
 
         return $items->get();
     }
