@@ -4,6 +4,7 @@ namespace Adrenth\RssFetcher;
 
 use Adrenth\RssFetcher\Commands\FetchRssCommand;
 use Adrenth\RssFetcher\Components\Items;
+use Adrenth\RssFetcher\ReportWidgets\Headlines;
 use Backend;
 use System\Classes\PluginBase;
 
@@ -43,6 +44,19 @@ class Plugin extends PluginBase
     {
         return [
             Items::class => 'rssItems'
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function registerReportWidgets()
+    {
+        return [
+            Headlines::class => [
+                'label' => 'RSS Headlines',
+                'code' => 'headlines'
+            ]
         ];
     }
 
