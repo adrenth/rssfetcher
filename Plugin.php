@@ -2,9 +2,6 @@
 
 namespace Adrenth\RssFetcher;
 
-use Adrenth\RssFetcher\Commands\FetchRssCommand;
-use Adrenth\RssFetcher\Components\Items;
-use Adrenth\RssFetcher\ReportWidgets\Headlines;
 use Backend;
 use System\Classes\PluginBase;
 
@@ -34,7 +31,10 @@ class Plugin extends PluginBase
      */
     public function register()
     {
-        $this->registerConsoleCommand('Adrenth.RssFetcher', FetchRssCommand::class);
+        $this->registerConsoleCommand(
+            'Adrenth.RssFetcher',
+            'Adrenth\RssFetcher\Commands\FetchRssCommand'
+        );
     }
 
     /**
@@ -43,7 +43,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            Items::class => 'rssItems'
+            'Adrenth\RssFetcher\Components\Items' => 'rssItems'
         ];
     }
 
@@ -53,7 +53,7 @@ class Plugin extends PluginBase
     public function registerReportWidgets()
     {
         return [
-            Headlines::class => [
+            'Adrenth\RssFetcher\ReportWidgets\Headlines' => [
                 'label' => 'RSS Headlines',
                 'code' => 'headlines'
             ]
