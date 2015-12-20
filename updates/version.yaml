@@ -4,3 +4,4 @@
   - create_items_table.php
   - seed_sources_table.php
 1.0.2: Add RSS Headlines dashboard widget
+1.0.3: Add code fixes for to meet PHP 5.4 compatibility

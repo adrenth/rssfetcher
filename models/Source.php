@@ -36,20 +36,11 @@ class Source extends Model
      */
     public $hasMany = [
         'items' => [
-            Item::class,
+            'Adrenth\RssFetcher\Models\Item',
         ],
         'items_count' => [
-            Item::class,
+            'Adrenth\RssFetcher\Models\Item',
             'count' => true
         ]
     ];
-
-    public $hasOne = [];
-    public $belongsTo = [];
-    public $belongsToMany = [];
-    public $morphTo = [];
-    public $morphOne = [];
-    public $morphMany = [];
-    public $attachOne = [];
-    public $attachMany = [];
 }

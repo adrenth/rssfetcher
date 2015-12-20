@@ -46,15 +46,8 @@ class Item extends Model
     /**
      * {@inheritdoc}
      */
-    public $hasOne = [];
-    public $hasMany = [];
     public $belongsTo = [
-        'source' => Source::class
+        'source' => 'Adrenth\RssFetcher\Models\Source'
     ];
     public $belongsToMany = [];
-    public $morphTo = [];
-    public $morphOne = [];
-    public $morphMany = [];
-    public $attachOne = [];
-    public $attachMany = [];
 }
