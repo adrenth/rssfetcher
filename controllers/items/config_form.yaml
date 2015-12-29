@@ -3,7 +3,7 @@
 # ===================================
 
 # Record name
-name: Item
+name: adrenth.rssfetcher::lang.item.item
 
 # Model Form Field configuration
 form: $/adrenth/rssfetcher/models/item/fields.yaml
@@ -16,16 +16,12 @@ defaultRedirect: adrenth/rssfetcher/items
 
 # Create page
 create:
-    title: Create Item
+    title: adrenth.rssfetcher::lang.item.create_item
     redirect: adrenth/rssfetcher/items/update/:id
     redirectClose: adrenth/rssfetcher/items
 
 # Update page
 update:
-    title: Edit Item
+    title: adrenth.rssfetcher::lang.item.edit_item
     redirect: adrenth/rssfetcher/items
     redirectClose: adrenth/rssfetcher/items
-
-# Preview page
-preview:
-    title: Preview Item

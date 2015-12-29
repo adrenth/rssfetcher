@@ -18,8 +18,8 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name' => 'RssFetcher',
-            'description' => 'Fetches RSS items from various sources to put on your website',
+            'name' => 'adrenth.rssfetcher::lang.plugin.name',
+            'description' => 'adrenth.rssfetcher::lang.plugin.name',
             'author' => 'A. Drenth <adrenth@gmail.com>',
             'icon' => 'icon-rss',
             'homepage' => 'http://github.com/adrenth/rssfetcher'
@@ -67,12 +67,12 @@ class Plugin extends PluginBase
     {
         return [
             'adrenth.rssfetcher.access_sources' => [
-                'tab' => 'RSS Fetcher',
-                'label' => 'Access Sources'
+                'tab' => 'adrenth.rssfetcher::lang.plugin.name',
+                'label' => 'adrenth.rssfetcher::permissions.access_sources_label'
             ],
             'adrenth.rssfetcher.access_items' => [
-                'tab' => 'RSS Fetcher',
-                'label' => 'Access Items'
+                'tab' => 'adrenth.rssfetcher::lang.plugin.name',
+                'label' => 'adrenth.rssfetcher::permissions.access_items_label'
             ],
         ];
     }
@@ -84,20 +84,20 @@ class Plugin extends PluginBase
     {
         return [
             'rssfetcher' => [
-                'label' => 'RSS Fecther',
+                'label' => 'adrenth.rssfetcher::lang.navigation.menu_label',
                 'url' => Backend::url('adrenth/rssfetcher/sources'),
                 'icon' => 'icon-rss',
                 'permissions' => ['adrenth.rssfetcher.*'],
                 'order' => 500,
                 'sideMenu' => [
                     'sources' => [
-                        'label' => 'Sources',
+                        'label' => 'adrenth.rssfetcher::lang.navigation.side_menu_label_sources',
                         'icon' => 'icon-globe',
                         'url' => Backend::url('adrenth/rssfetcher/sources'),
                         'permissions' => ['adrenth.rssfetcher.access_sources']
                     ],
                     'items' => [
-                        'label' => 'Items',
+                        'label' => 'adrenth.rssfetcher::lang.navigation.side_menu_label_items',
                         'icon' => 'icon-files-o',
                         'url' => Backend::url('adrenth/rssfetcher/items'),
                         'permissions' => ['adrenth.rssfetcher.access_items']

@@ -2,12 +2,14 @@
 
 namespace Adrenth\RssFetcher\Controllers;
 
+use Adrenth\RssFetcher\Exceptions\SourceNotEnabledException;
 use Adrenth\RssFetcher\Models\Source;
 use ApplicationException;
-use BackendMenu;
-use Backend\Classes\Controller;
 use Artisan;
+use Backend\Classes\Controller;
+use BackendMenu;
 use Flash;
+use Lang;
 
 /**
  * Sources Back-end Controller
@@ -22,7 +24,14 @@ class Sources extends Controller
         'Backend.Behaviors.ListController'
     ];
 
+    /**
+     * @type string
+     */
     public $formConfig = 'config_form.yaml';
+
+    /**
+     * @type string
+     */
     public $listConfig = 'config_list.yaml';
 
     /**
@@ -47,13 +56,19 @@ class Sources extends Controller
             $source = Source::findOrFail($this->params[0]);
 
             if ($source instanceof Source && !$source->getAttribute('is_enabled')) {
-                throw new \RuntimeException('Source is not enabled, please enabled it first.');
+                throw new SourceNotEnabledException(Lang::get('adrenth.rssfetcher::lang.source.source_not_enabled'));
             }
 
             Artisan::call('adrenth:fetch-rss', ['source' => $this->params[0]]);
-            Flash::success('Successfully fetched RSS items for this source');
+            Flash::success(Lang::get('adrenth.rssfetcher::lang.source.items_fetch_success'));
+        } catch (SourceNotEnabledException $e) {
+            Flash::warning($e->getMessage());
         } catch (\Exception $e) {
-            throw new ApplicationException('Error while fetching RSS items: ' . $e->getMessage());
+            throw new ApplicationException(
+                Lang::get('adrenth.rssfetcher::lang.source.items_fetch_fail', [
+                    'error' => $e->getMessage()
+                ])
+            );
         }
     }
 }

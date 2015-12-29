@@ -1,7 +1,7 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('adrenth/rssfetcher/items') ?>">Items</a></li>
-        <li><?= e($this->pageTitle) ?></li>
+        <li><a href="<?= Backend::url('adrenth/rssfetcher/items') ?>"><?= e(trans('adrenth.rssfetcher::lang.navigation.side_menu_label_items')) ?></a></li>
+        <li><?= e(trans($this->pageTitle)) ?></li>
     </ul>
 <?php Block::endPut() ?>
 
@@ -20,28 +20,28 @@
                     data-request="onSave"
                     data-request-data="redirect:0"
                     data-hotkey="ctrl+s, cmd+s"
-                    data-load-indicator="Saving Item..."
+                    data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
                     class="btn btn-primary">
-                    <u>S</u>ave
+                    <?= e(trans('backend::lang.form.save')) ?>
                 </button>
                 <button
                     type="button"
                     data-request="onSave"
                     data-request-data="close:1"
                     data-hotkey="ctrl+enter, cmd+enter"
-                    data-load-indicator="Saving Item..."
+                    data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
                     class="btn btn-default">
-                    Save and Close
+                    <?= e(trans('backend::lang.form.save_and_close')) ?>
                 </button>
                 <button
                     type="button"
                     class="oc-icon-trash-o btn-icon danger pull-right"
                     data-request="onDelete"
-                    data-load-indicator="Deleting Item..."
-                    data-request-confirm="Do you really want to delete this item?">
+                    data-load-indicator="<?= e(trans('backend::lang.form.deleting')) ?>"
+                    data-request-confirm="<?= e(trans('adrenth.rssfetcher::lang.item.delete_confirm')) ?>">
                 </button>
                 <span class="btn-text">
-                    or <a href="<?= Backend::url('adrenth/rssfetcher/items') ?>">Cancel</a>
+                    or <a href="<?= Backend::url('adrenth/rssfetcher/items') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
                 </span>
             </div>
         </div>
@@ -50,7 +50,7 @@
 
 <?php else: ?>
 
-    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
-    <p><a href="<?= Backend::url('adrenth/rssfetcher/items') ?>" class="btn btn-default">Return to items list</a></p>
+    <p class="flash-message static error"><?= e(trans($this->fatalError)) ?></p>
+    <p><a href="<?= Backend::url('adrenth/rssfetcher/items') ?>" class="btn btn-default"><?= e(trans('adrenth.rssfetcher::lang.item.return_to_items')) ?></a></p>
 
 <?php endif ?>

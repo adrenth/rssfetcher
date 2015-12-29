@@ -23,8 +23,8 @@ class Items extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'Item List',
-            'description' => 'Displays a list of latest RSS items on the page.'
+            'name' => 'adrenth.rssfetcher::lang.component.item_list.name',
+            'description' => 'adrenth.rssfetcher::lang.component.item_list.description'
         ];
     }
 
@@ -35,7 +35,7 @@ class Items extends ComponentBase
     {
         return [
             'maxItems' => [
-                'label' => 'Max Items',
+                'label' => 'adrenth.rssfetcher::lang.item.max_items',
                 'type' => 'string',
                 'default' => '10'
             ]

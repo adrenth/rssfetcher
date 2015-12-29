@@ -9,7 +9,7 @@ list: $/adrenth/rssfetcher/models/item/columns.yaml
 modelClass: Adrenth\RssFetcher\Models\Item
 
 # List Title
-title: Manage Items
+title: adrenth.rssfetcher::lang.item.manage_items
 
 # Link URL for each record
 recordUrl: adrenth/rssfetcher/items/update/:id
@@ -27,9 +27,9 @@ showSetup: true
 showSorting: true
 
 # Default sorting column
-# defaultSort:
-#     column: created_at
-#     direction: desc
+defaultSort:
+     column: published_at
+     direction: desc
 
 # Display checkboxes next to each record
 # showCheckboxes: true

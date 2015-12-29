@@ -4,25 +4,25 @@
 
 fields:
     name:
-        label: Name
+        label: adrenth.rssfetcher::lang.item.name
         type: text
         span: left
     source_url:
-        label: Source URL
+        label: adrenth.rssfetcher::lang.item.source_url
         type: text
         placeholder: http://example.com/rss.xml
         span: right
     description:
-        label: Description
+        label: adrenth.rssfetcher::lang.item.description
         type: textarea
         size: small
     max_items:
-        label: Max Items
-        comment: Maximum items to fetch from source
+        label: adrenth.rssfetcher::lang.item.max_items
+        comment: adrenth.rssfetcher::lang.item.max_items_description
         default: 10
         span: left
     is_enabled:
-        label: Enabled
+        label: adrenth.rssfetcher::lang.item.enabled
         type: switch
-        comment: Flick this switch to enable this RSS source
+        comment: adrenth.rssfetcher::lang.item.enabled_comment
         span: left

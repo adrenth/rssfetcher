@@ -9,7 +9,7 @@ list: $/adrenth/rssfetcher/models/source/columns.yaml
 modelClass: Adrenth\RssFetcher\Models\Source
 
 # List Title
-title: Manage Sources
+title: adrenth.rssfetcher::lang.source.manage_sources
 
 # Link URL for each record
 recordUrl: adrenth/rssfetcher/sources/update/:id
