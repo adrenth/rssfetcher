@@ -4,21 +4,21 @@
 
 columns:
     name:
-        label: Name
+        label: adrenth.rssfetcher::lang.item.name
         searchable: true
     source_url:
-        label: Source URL
+        label: adrenth.rssfetcher::lang.item.source_url
     max_items:
-        label: Max Items
+        label: adrenth.rssfetcher::lang.item.max_items
         type: number
     is_enabled:
-        label: Enabled
+        label: adrenth.rssfetcher::lang.item.enabled
         type: switch
     items_count:
-        label: "# items"
+        label: adrenth.rssfetcher::lang.item.items_count
         relation: items_count
         valueFrom: count
         default: 0
     fetched_at:
-        label: Last fetched
+        label: adrenth.rssfetcher::lang.item.last_fetched
         type: timesince

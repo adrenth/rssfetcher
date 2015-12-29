@@ -4,29 +4,29 @@
 
 fields:
     title:
-        label: Title
+        label: adrenth.rssfetcher::lang.source.title
         type: text
         span: left
     link:
-        label: Link
+        label: adrenth.rssfetcher::lang.source.link
         type: text
         span: right
     description:
-        label: Description
+        label: adrenth.rssfetcher::lang.source.description
         type: textarea
         size: small
     author:
-        label: Author
+        label: adrenth.rssfetcher::lang.source.author
         type: text
         span: left
     category:
-        label: Category
+        label: adrenth.rssfetcher::lang.source.category
         type: text
         span: right
     comments:
-        label: Comments
+        label: adrenth.rssfetcher::lang.source.comments
         type: text
     pub_date:
-        label: Publish date
+        label: adrenth.rssfetcher::lang.source.published_at
         type: datepicker
         mode: datetime

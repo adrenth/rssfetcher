@@ -4,6 +4,7 @@ namespace Adrenth\RssFetcher\ReportWidgets;
 
 use Adrenth\RssFetcher\Components\Items;
 use Backend\Classes\ReportWidgetBase;
+use Lang;
 
 /**
  * Class Headlines
@@ -18,8 +19,8 @@ class Headlines extends ReportWidgetBase
     public function widgetDetails()
     {
         return [
-            'name' => 'RSS Item Widget',
-            'description' => 'Shows the latest fetched RSS items'
+            'name' => 'adrenth.rssfetcher::lang.report_widget.headlines.name',
+            'description' => 'adrenth.rssfetcher::lang.report_widget.headlines.name'
         ];
     }
 
@@ -30,21 +31,21 @@ class Headlines extends ReportWidgetBase
     {
         return [
             'title' => [
-                'title' => 'Widget title',
-                'default' => 'Latest Headlines',
+                'title' => 'adrenth.rssfetcher::lang.report_widget.headlines.title_title',
+                'default' => Lang::get('adrenth.rssfetcher::lang.report_widget.headlines.title_default'),
                 'type' => 'string',
                 'validationPattern' => '^.+$',
-                'validationMessage' => 'The Widget Title is required.'
+                'validationMessage' => 'adrenth.rssfetcher::lang.report_widget.headlines.title_required'
             ],
             'maxItems' => [
-                'title' => 'Number of items to display',
+                'title' => 'adrenth.rssfetcher::lang.report_widget.headlines.max_items_title',
                 'default' => '5',
                 'type' => 'string',
                 'validationPattern' => '^[0-9]+$'
             ],
             'dateFormat' => [
-                'title' => 'Date format',
-                'description' => 'Please check official PHP documentation on date formatting on php.net',
+                'title' => 'adrenth.rssfetcher::lang.report_widget.headlines.date_format_title',
+                'description' => 'adrenth.rssfetcher::lang.report_widget.headlines.date_format_description',
                 'default' => 'Y-m-d H:i',
                 'type' => 'string',
             ]

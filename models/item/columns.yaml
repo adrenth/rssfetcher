@@ -4,20 +4,20 @@
 
 columns:
     source:
-        label: Source
+        label: adrenth.rssfetcher::lang.source.source
         searchable: true
         relation: source
         select: name
     title:
-        label: Title
+        label: adrenth.rssfetcher::lang.source.title
         searchable: true
         type: text
     author:
-        label: Author
+        label: adrenth.rssfetcher::lang.source.author
         searchable: true
         type: text
     pub_date:
-        label: Published at
+        label: adrenth.rssfetcher::lang.source.published_at
         type: datetime
     item_id:
         label: ID

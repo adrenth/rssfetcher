@@ -20,7 +20,14 @@ class Items extends Controller
         'Backend.Behaviors.ListController'
     ];
 
+    /**
+     * @type string
+     */
     public $formConfig = 'config_form.yaml';
+
+    /**
+     * @type string
+     */
     public $listConfig = 'config_list.yaml';
 
     /**
