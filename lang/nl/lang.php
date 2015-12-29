@@ -59,6 +59,10 @@ return [
         'item_list' => [
             'name' => 'Itemlijst',
             'description' => 'Toont een lijst van meest recente items op de pagina.',
+        ],
+        'source_list' => [
+            'name' => 'Bronlijst',
+            'description' => 'Toont een lijst van bronnen.'
         ]
     ],
     'report_widget' => [

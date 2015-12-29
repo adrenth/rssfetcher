@@ -59,6 +59,10 @@ return [
         'item_list' => [
             'name' => 'Item List',
             'description' => 'Displays a list of latest RSS items on the page.',
+        ],
+        'source_list' => [
+            'name' => 'Source List',
+            'description' => 'Displays a list of sources.'
         ]
     ],
     'report_widget' => [
