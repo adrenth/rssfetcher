@@ -12,10 +12,9 @@ columns:
         label: adrenth.rssfetcher::lang.source.title
         searchable: true
         type: text
-    author:
-        label: adrenth.rssfetcher::lang.source.author
-        searchable: true
-        type: text
+    is_published:
+        label:  adrenth.rssfetcher::lang.source.is_published
+        type: switch
     pub_date:
         label: adrenth.rssfetcher::lang.source.published_at
         type: datetime

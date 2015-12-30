@@ -33,7 +33,8 @@ class Item extends Model
         'author',
         'category',
         'comments',
-        'pub_date'
+        'pub_date',
+        'is_published'
     ];
 
     /**

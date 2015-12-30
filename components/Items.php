@@ -67,6 +67,7 @@ class Items extends ComponentBase
                 ])
                 ->join('adrenth_rssfetcher_sources', 'adrenth_rssfetcher_items.source_id', '=', 'adrenth_rssfetcher_sources.id')
                 ->where('adrenth_rssfetcher_sources.is_enabled', '=', 1)
+                ->where('adrenth_rssfetcher_items.is_published', '=', 1)
                 ->orderBy('adrenth_rssfetcher_items.pub_date', 'desc')
                 ->limit($maxItems);
         } catch (\InvalidArgumentException $e) {
