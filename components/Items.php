@@ -3,6 +3,7 @@
 namespace Adrenth\RssFetcher\Components;
 
 use Cms\Classes\ComponentBase;
+use DB;
 use October\Rain\Support\Collection;
 
 /**
@@ -47,11 +48,11 @@ class Items extends ComponentBase
      */
     public function onRun()
     {
-        $this->items = $this->page['items'] = self::loadItems($this->property('maxItems'));
+        $this->items = self::loadItems($this->property('maxItems'));
     }
 
     /**
-     * List Items
+     * Load Items
      *
      * @param int $maxItems
      * @return array|static[]
@@ -59,13 +60,14 @@ class Items extends ComponentBase
     public static function loadItems($maxItems = 10)
     {
         try {
-            $items = \Db::table('adrenth_rssfetcher_items')
+            $items = DB::table('adrenth_rssfetcher_items')
                 ->select([
                     'adrenth_rssfetcher_items.*',
                     'adrenth_rssfetcher_sources.name AS source'
                 ])
                 ->join('adrenth_rssfetcher_sources', 'adrenth_rssfetcher_items.source_id', '=', 'adrenth_rssfetcher_sources.id')
                 ->where('adrenth_rssfetcher_sources.is_enabled', '=', 1)
+                ->where('adrenth_rssfetcher_items.is_published', '=', 1)
                 ->orderBy('adrenth_rssfetcher_items.pub_date', 'desc')
                 ->limit($maxItems);
         } catch (\InvalidArgumentException $e) {

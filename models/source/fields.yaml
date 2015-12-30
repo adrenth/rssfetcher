@@ -26,3 +26,7 @@ fields:
         type: switch
         comment: adrenth.rssfetcher::lang.item.enabled_comment
         span: left
+    publish_new_items:
+        label: adrenth.rssfetcher::lang.item.publish_new_items
+        type: switch
+        span: left

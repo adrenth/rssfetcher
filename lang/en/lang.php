@@ -24,6 +24,8 @@ return [
         'category' => 'Category',
         'comments' => 'Comments',
         'published_at' => 'Published At',
+        'is_published' => 'Published',
+        'is_published_comment' => 'Flick this switch to publish this item',
         'source_not_enabled' => 'Source is not enabled, please enabled it first',
         'items_fetch_success' => 'Successfully fetched RSS items for this source',
         'items_fetch_fail' => 'An error has occurred while fetching RSS items: :error',
@@ -45,6 +47,7 @@ return [
         'max_items_description' => 'Maximum items to fetch from source',
         'enabled' => 'Enabled',
         'enabled_comment' => 'Flick this switch to enable this RSS source',
+        'publish_new_items' => 'Publish new fetched items',
         'description' => 'Description',
         'items_count' => '# items',
         'last_fetched' => 'Last fetched',
@@ -59,6 +62,10 @@ return [
         'item_list' => [
             'name' => 'Item List',
             'description' => 'Displays a list of latest RSS items on the page.',
+        ],
+        'source_list' => [
+            'name' => 'Source List',
+            'description' => 'Displays a list of sources.'
         ]
     ],
     'report_widget' => [

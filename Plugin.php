@@ -43,7 +43,8 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'Adrenth\RssFetcher\Components\Items' => 'rssItems'
+            'Adrenth\RssFetcher\Components\Items' => 'rssItems',
+            'Adrenth\RssFetcher\Components\Sources' => 'rssSources'
         ];
     }
 

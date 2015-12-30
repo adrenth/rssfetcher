@@ -30,3 +30,9 @@ fields:
         label: adrenth.rssfetcher::lang.source.published_at
         type: datepicker
         mode: datetime
+        span: left
+    is_published:
+        label: adrenth.rssfetcher::lang.source.is_published
+        type: switch
+        comment: adrenth.rssfetcher::lang.source.is_published_comment
+        span: left

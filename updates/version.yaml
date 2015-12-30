@@ -6,3 +6,6 @@
 1.0.2: Add RSS Headlines dashboard widget
 1.0.3: Add code fixes for to meet PHP 5.4 compatibility
 1.0.4: Add localization (English and Dutch language)
+1.0.5:
+  - Add publication settings to Item and Source
+  - add_publish_columns.php

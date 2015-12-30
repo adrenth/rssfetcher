@@ -70,7 +70,8 @@ class FetchRssCommand extends Command
                         'description' => strip_tags($item->getDescription()),
                         'category' => implode(', ', $item->getCategories()->getValues()),
                         'comments' => $item->getCommentLink(),
-                        'pub_date' => $item->getDateCreated()
+                        'pub_date' => $item->getDateCreated(),
+                        'is_published' => $source->getAttribute('publish_new_items')
                     ];
 
                     if ($item->getAuthors() !== null && is_array($item->getAuthors())) {

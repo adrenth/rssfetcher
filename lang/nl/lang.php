@@ -24,6 +24,8 @@ return [
         'category' => 'Categorie',
         'comments' => 'Reacties',
         'published_at' => 'Gepubliceerd op',
+        'is_published' => 'Gepubliceerd',
+        'is_published_comment' => 'Schuif om dit item te publiceren',
         'source_not_enabled' => 'Bron is niet inschakeld',
         'items_fetch_success' => 'RSS items succesvol opgehaald van deze bron',
         'items_fetch_fail' => 'Er is een fout opgetreden tijdens het ophalen van de items: :error',
@@ -45,6 +47,7 @@ return [
         'max_items_description' => 'Maximaal aantal items om op te halen van bron',
         'enabled' => 'Ingeschakeld',
         'enabled_comment' => 'Schuif om de bron in te schakelen',
+        'publish_new_items' => 'Publiceer nieuw binnengehaalde items meteen',
         'description' => 'Omschrijving',
         'items_count' => 'Aantal items',
         'last_fetched' => 'Laatst opgehaald',
@@ -59,6 +62,10 @@ return [
         'item_list' => [
             'name' => 'Itemlijst',
             'description' => 'Toont een lijst van meest recente items op de pagina.',
+        ],
+        'source_list' => [
+            'name' => 'Bronlijst',
+            'description' => 'Toont een lijst van bronnen.'
         ]
     ],
     'report_widget' => [
