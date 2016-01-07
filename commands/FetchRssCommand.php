@@ -63,7 +63,8 @@ class FetchRssCommand extends Command
 
                     $this->getOutput()->writeln($itemCount . '. ' . $item->getTitle());
 
-                    $data = [
+                    $attributes = [
+                        'item_id' => $item->getId(),
                         'source_id' => $source->getAttribute('id'),
                         'title' => $item->getTitle(),
                         'link' => $item->getLink(),
@@ -75,10 +76,10 @@ class FetchRssCommand extends Command
                     ];
 
                     if ($item->getAuthors() !== null && is_array($item->getAuthors())) {
-                        $data['author'] = implode(', ', $item->getAuthors());
+                        $attributes['author'] = implode(', ', $item->getAuthors());
                     }
 
-                    Item::updateOrCreate(['item_id' => $item->getId()], $data);
+                    Item::firstOrCreate($attributes);
 
                     if ($maxItems > 0 && $itemCount >= $maxItems) {
                         break;

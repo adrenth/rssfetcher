@@ -9,3 +9,4 @@
 1.0.5:
   - Add publication settings to Item and Source
   - add_publish_columns.php
+1.0.6: Prevent overwriting existing Items while fetching RSS feed
