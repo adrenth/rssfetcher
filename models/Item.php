@@ -50,5 +50,18 @@ class Item extends Model
     public $belongsTo = [
         'source' => 'Adrenth\RssFetcher\Models\Source'
     ];
-    public $belongsToMany = [];
+
+    /**
+     * Allows filtering for specifc sources
+     *
+     * @param October\Rain\Database\Builder $query QueryBuilder
+     * @param array $sources List of source ids
+     * @return October\Rain\Database\Builder
+     */
+    public function scopeFilterSources($query, array $sources = [])
+    {
+        return $query->whereHas('source', function ($q) use ($sources) {
+            $q->whereIn('id', $sources);
+        });
+    }
 }
