@@ -36,7 +36,7 @@ return [
         'return_to_sources' => 'Terug naar bronlijst',
         'fetch_items' => 'Items ophalen',
         'fetching_items' => 'Items ophalen...',
-        'delete_confirm' => 'Weet je zeker dat je deze bron wilt verwijderen?'
+        'delete_confirm' => 'Weet je het zeker?',
     ],
     'item' => [
         'item' => 'Item',
@@ -56,7 +56,8 @@ return [
         'edit_item' => 'Wijzig item',
         'manage_items' => 'Beheer items',
         'return_to_items' => 'Terug naar itemlijst',
-        'delete_confirm' => 'Weet je zeker dat je dit item wilt verwijderen?'
+        'delete_confirm' => 'Weet je het zeker?',
+        'hide_published' => 'Verberg gepubliceerd',
     ],
     'component' => [
         'item_list' => [
@@ -65,8 +66,8 @@ return [
         ],
         'source_list' => [
             'name' => 'Bronlijst',
-            'description' => 'Toont een lijst van bronnen.'
-        ]
+            'description' => 'Toont een lijst van bronnen.',
+        ],
     ],
     'report_widget' => [
         'headlines' => [
@@ -78,6 +79,6 @@ return [
             'max_items_title' => 'Aantal items om te tonen',
             'date_format_title' => 'Datum formaat',
             'date_format_description' => 'Raadpleeg de officiële `date` PHP documentatie op php.net.',
-        ]
-    ]
+        ],
+    ],
 ];

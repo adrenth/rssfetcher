@@ -36,7 +36,7 @@ return [
         'return_to_sources' => 'Return to sources list',
         'fetch_items' => 'Fetch items',
         'fetching_items' => 'Fetching items...',
-        'delete_confirm' => 'Do you really want to delete this source?'
+        'delete_confirm' => 'Are you sure?',
     ],
     'item' => [
         'item' => 'Item',
@@ -56,7 +56,8 @@ return [
         'edit_item' => 'Edit Item',
         'manage_items' => 'Manage Items',
         'return_to_items' => 'Return to items list',
-        'delete_confirm' => 'Do you really want to delete this item?'
+        'delete_confirm' => 'Are you sure?',
+        'hide_published' => 'Hide published',
     ],
     'component' => [
         'item_list' => [
@@ -65,8 +66,8 @@ return [
         ],
         'source_list' => [
             'name' => 'Source List',
-            'description' => 'Displays a list of sources.'
-        ]
+            'description' => 'Displays a list of sources.',
+        ],
     ],
     'report_widget' => [
         'headlines' => [
@@ -78,6 +79,6 @@ return [
             'max_items_title' => 'Number of items to display',
             'date_format_title' => 'Date format',
             'date_format_description' => 'Please check official PHP documentation on date formatting on php.net.',
-        ]
-    ]
+        ],
+    ],
 ];
