@@ -2,6 +2,7 @@
 
 namespace Adrenth\RssFetcher\Controllers;
 
+use Adrenth\RssFetcher\Models\Item;
 use BackendMenu;
 use Backend\Classes\Controller;
 
@@ -38,5 +39,26 @@ class Items extends Controller
         parent::__construct();
 
         BackendMenu::setContext('Adrenth.RssFetcher', 'rssfetcher', 'items');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function index_onDelete()
+    {
+        if (($checkedIds = post('checked'))
+            && is_array($checkedIds)
+            && count($checkedIds)
+        ) {
+            foreach ($checkedIds as $sourceId) {
+                if (!$source = Item::find($sourceId)) {
+                    continue;
+                }
+
+                $source->delete();
+            }
+        }
+
+        return $this->listRefresh();
     }
 }

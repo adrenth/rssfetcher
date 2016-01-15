@@ -71,4 +71,25 @@ class Sources extends Controller
             );
         }
     }
+
+    /**
+     * @return mixed
+     */
+    public function index_onDelete()
+    {
+        if (($checkedIds = post('checked'))
+            && is_array($checkedIds)
+            && count($checkedIds)
+        ) {
+            foreach ($checkedIds as $sourceId) {
+                if (!$source = Source::find($sourceId)) {
+                    continue;
+                }
+
+                $source->delete();
+            }
+        }
+
+        return $this->listRefresh();
+    }
 }

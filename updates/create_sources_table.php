@@ -25,7 +25,9 @@ class CreateSourcesTable extends Migration
             $table->smallInteger('max_items');
             $table->dateTime('fetched_at')->nullable();
             $table->boolean('is_enabled')->default(false);
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+
         });
     }
 
