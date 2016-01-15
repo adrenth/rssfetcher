@@ -28,7 +28,8 @@ class CreateItemsTable extends Migration
             $table->mediumText('category')->nullable();
             $table->string('comments')->nullable();
             $table->dateTimeTz('pub_date')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
 
             $table->foreign('source_id')
                 ->references('id')
