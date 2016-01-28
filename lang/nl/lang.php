@@ -6,8 +6,9 @@ return [
         'description' => 'Haalt RSS items op van diverse bronnen om op jouw website te plaatsen',
     ],
     'permissions' => [
-        'access_sources_label' => 'Toegang tot bronnen',
-        'access_items_label' => 'Toegang tot items',
+        'access_sources' => 'Beheer bronnen',
+        'access_items' => 'Beheer items',
+        'access_import_export' => 'Toestaan importeren en exporteren'
     ],
     'navigation' => [
         'menu_label' => 'RSS Fecther',
@@ -37,6 +38,10 @@ return [
         'fetch_items' => 'Items ophalen',
         'fetching_items' => 'Items ophalen...',
         'delete_confirm' => 'Weet je het zeker?',
+        'import_sources' => 'Importeer bronnen',
+        'export_sources' => 'Exporteer bronnen',
+        'update_existing_sources' => 'Bijwerken van bestaande bronnen',
+        'update_existing_sources_comment' => 'Selecteer deze optie om bronnen bij te werken met exact dezelfde ID.'
     ],
     'item' => [
         'item' => 'Item',
@@ -60,6 +65,8 @@ return [
         'return_to_items' => 'Terug naar itemlijst',
         'delete_confirm' => 'Weet je het zeker?',
         'hide_published' => 'Verberg gepubliceerd',
+        'import_sources' => 'Importeer bronnen',
+        'export_sources' => 'Exporteer bronnen',
     ],
     'component' => [
         'item_list' => [

@@ -6,8 +6,9 @@ return [
         'description' => 'Fetches RSS items from various sources to put on your website',
     ],
     'permissions' => [
-        'access_sources_label' => 'Access sources',
-        'access_items_label' => 'Access items',
+        'access_sources' => 'Manage sources',
+        'access_items' => 'Manege items',
+        'access_import_export' => 'Allowed to import and export'
     ],
     'navigation' => [
         'menu_label' => 'RSS Fecther',
@@ -37,6 +38,10 @@ return [
         'fetch_items' => 'Fetch items',
         'fetching_items' => 'Fetching items...',
         'delete_confirm' => 'Are you sure?',
+        'import_sources' => 'Import sources',
+        'export_sources' => 'Export sources',
+        'update_existing_sources' => 'Update existing sources',
+        'update_existing_sources_comment' => 'Check this box to update sources that have exactly the same ID.'
     ],
     'item' => [
         'item' => 'Item',

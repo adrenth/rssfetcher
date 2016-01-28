@@ -1,0 +1,16 @@
+# ===================================
+#  Import/Export Behavior Config
+# ===================================
+
+import:
+    title: adrenth.rssfetcher::lang.source.import_sources
+    modelClass: Adrenth\RssFetcher\Models\SourceImport
+    list: $/adrenth/rssfetcher/models/sourceimport/columns.yaml
+    redirect: adrenth/rssfetcher/sources
+export:
+    title: adrenth.rssfetcher::lang.source.export_sources
+    modelClass: Adrenth\RssFetcher\Models\SourceExport
+    list: $/adrenth/rssfetcher/models/sourceexport/columns.yaml
+    redirect: adrenth/rssfetcher/sources
+    permissions: adrenth.rssfetcher.access_import_export
+    filename: sources.csv

@@ -21,18 +21,18 @@ class Sources extends Controller
      */
     public $implement = [
         'Backend.Behaviors.FormController',
-        'Backend.Behaviors.ListController'
+        'Backend.Behaviors.ListController',
+        'Backend.Behaviors.ImportExportController',
     ];
 
-    /**
-     * @type string
-     */
+    /** @type string */
     public $formConfig = 'config_form.yaml';
 
-    /**
-     * @type string
-     */
+    /** @type string */
     public $listConfig = 'config_list.yaml';
+
+    /** @type string */
+    public $importExportConfig = 'config_import_export.yaml';
 
     /**
      * {@inheritdoc}
