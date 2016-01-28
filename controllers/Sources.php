@@ -21,18 +21,18 @@ class Sources extends Controller
      */
     public $implement = [
         'Backend.Behaviors.FormController',
-        'Backend.Behaviors.ListController'
+        'Backend.Behaviors.ListController',
+        'Backend.Behaviors.ImportExportController',
     ];
 
-    /**
-     * @type string
-     */
+    /** @type string */
     public $formConfig = 'config_form.yaml';
 
-    /**
-     * @type string
-     */
+    /** @type string */
     public $listConfig = 'config_list.yaml';
+
+    /** @type string */
+    public $importExportConfig = 'config_import_export.yaml';
 
     /**
      * {@inheritdoc}
@@ -69,6 +69,30 @@ class Sources extends Controller
                     'error' => $e->getMessage()
                 ])
             );
+        }
+    }
+
+    public function onBulkFetch()
+    {
+        if (($checkedIds = post('checked'))
+            && is_array($checkedIds)
+            && count($checkedIds)
+        ) {
+            foreach ($checkedIds as $sourceId) {
+                if (!$source = Source::find($sourceId)) {
+                    continue;
+                }
+
+                if (!$source->getAttribute('is_enabled')) {
+                    continue;
+                }
+
+                try {
+                    Artisan::call('adrenth:fetch-rss', ['source' => $source->getAttribute('id')]);
+                } catch (\Exception $e) {
+                    Flash::error($e->getMessage());
+                }
+            }
         }
     }
 

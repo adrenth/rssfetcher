@@ -3,12 +3,15 @@
 namespace Adrenth\RssFetcher\Models;
 
 use Model;
+use October\Rain\Database\Traits\Validation;
 
 /**
  * Source Model
  */
 class Source extends Model
 {
+    use Validation;
+
     /**
      * {@inheritdoc}
      */
@@ -29,6 +32,16 @@ class Source extends Model
      */
     protected $dates = [
         'fetched_at'
+    ];
+
+    /**
+     * Validation rules
+     *
+     * @type array
+     */
+    public $rules = [
+        'name' => 'required',
+        'source_url' => 'required',
     ];
 
     /**

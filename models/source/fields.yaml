@@ -6,9 +6,11 @@ fields:
     name:
         label: adrenth.rssfetcher::lang.item.name
         type: text
+        required: true
         span: left
     source_url:
         label: adrenth.rssfetcher::lang.item.source_url
+        required: true
         type: text
         placeholder: http://example.com/rss.xml
         span: right

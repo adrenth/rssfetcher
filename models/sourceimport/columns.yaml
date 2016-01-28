@@ -1,0 +1,6 @@
+columns:
+    id: ID
+    name: adrenth.rssfetcher::lang.item.name
+    source_url: adrenth.rssfetcher::lang.item.source_url
+    max_items: adrenth.rssfetcher::lang.item.max_items
+    is_enabled: adrenth.rssfetcher::lang.item.enabled

@@ -12,7 +12,60 @@ The plugin uses the `zendframework/rss-feed` package to parse the RSS and/or Ato
 
 ## Components
 
-The plugin is configured with 3 example sources and an `Items` component to show how you can build your own implementation.
+The plugin is configured with 4 example sources and has a few components which help you to display items and/or sources on your website.
+
+### Items
+
+Shows a list of most recent RSS items limited on the maximun number of items provided by you.
+
+An example of implementation code in your CMS page:
+
+````
+title = "A list of items"
+url = "/items"
+layout = "default"
+is_hidden = 0
+
+[rssItems]
+maxItems = 10
+==
+{% component 'rssItems' %}
+````
+
+### PaginatableItems
+
+Shows a list of most recent RSS items with an additional paginator element.
+
+An example of implementation code in your CMS page:
+
+````
+title = "A list of items (paginatable)"
+url = "/items"
+layout = "default"
+is_hidden = 0
+
+[rssPaginatableItems]
+itemsPerPage = 3
+==
+{% component 'rssPaginatableItems' %}
+````
+
+### Sources
+
+Shows a list of sources.
+
+An example of implementation code in your CMS page:
+
+````
+title = "A list of sources"
+url = "/sources"
+layout = "default"
+is_hidden = 0
+
+[rssSources]
+==
+{% component 'rssSources' %}
+````
 
 ## Reporting Widgets
 

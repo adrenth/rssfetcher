@@ -70,12 +70,16 @@ class Plugin extends PluginBase
         return [
             'adrenth.rssfetcher.access_sources' => [
                 'tab' => 'adrenth.rssfetcher::lang.plugin.name',
-                'label' => 'adrenth.rssfetcher::permissions.access_sources_label'
+                'label' => 'adrenth.rssfetcher::lang.permissions.access_sources'
             ],
             'adrenth.rssfetcher.access_items' => [
                 'tab' => 'adrenth.rssfetcher::lang.plugin.name',
-                'label' => 'adrenth.rssfetcher::permissions.access_items_label'
+                'label' => 'adrenth.rssfetcher::lang.permissions.access_items'
             ],
+            'adrenth.rssfetcher.access_import_export' => [
+                'tab' => 'adrenth.rssfetcher::lang.plugin.name',
+                'label' => 'adrenth.rssfetcher::lang.permissions.access_import_export'
+            ]
         ];
     }
 
