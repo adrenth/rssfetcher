@@ -72,6 +72,30 @@ class Sources extends Controller
         }
     }
 
+    public function onBulkFetch()
+    {
+        if (($checkedIds = post('checked'))
+            && is_array($checkedIds)
+            && count($checkedIds)
+        ) {
+            foreach ($checkedIds as $sourceId) {
+                if (!$source = Source::find($sourceId)) {
+                    continue;
+                }
+
+                if (!$source->getAttribute('is_enabled')) {
+                    continue;
+                }
+
+                try {
+                    Artisan::call('adrenth:fetch-rss', ['source' => $source->getAttribute('id')]);
+                } catch (\Exception $e) {
+                    Flash::error($e->getMessage());
+                }
+            }
+        }
+    }
+
     /**
      * @return mixed
      */

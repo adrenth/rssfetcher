@@ -8,7 +8,7 @@ return [
     'permissions' => [
         'access_sources' => 'Manage sources',
         'access_items' => 'Manege items',
-        'access_import_export' => 'Allowed to import and export'
+        'access_import_export' => 'Allowed to import and export',
     ],
     'navigation' => [
         'menu_label' => 'RSS Fecther',
@@ -41,7 +41,7 @@ return [
         'import_sources' => 'Import sources',
         'export_sources' => 'Export sources',
         'update_existing_sources' => 'Update existing sources',
-        'update_existing_sources_comment' => 'Check this box to update sources that have exactly the same ID.'
+        'update_existing_sources_comment' => 'Check this box to update sources that have exactly the same ID.',
     ],
     'item' => [
         'item' => 'Item',

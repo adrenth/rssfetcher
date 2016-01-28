@@ -8,7 +8,7 @@ return [
     'permissions' => [
         'access_sources' => 'Beheer bronnen',
         'access_items' => 'Beheer items',
-        'access_import_export' => 'Toestaan importeren en exporteren'
+        'access_import_export' => 'Toestaan importeren en exporteren',
     ],
     'navigation' => [
         'menu_label' => 'RSS Fecther',
@@ -41,7 +41,7 @@ return [
         'import_sources' => 'Importeer bronnen',
         'export_sources' => 'Exporteer bronnen',
         'update_existing_sources' => 'Bijwerken van bestaande bronnen',
-        'update_existing_sources_comment' => 'Selecteer deze optie om bronnen bij te werken met exact dezelfde ID.'
+        'update_existing_sources_comment' => 'Selecteer deze optie om bronnen bij te werken met exact dezelfde ID.',
     ],
     'item' => [
         'item' => 'Item',
