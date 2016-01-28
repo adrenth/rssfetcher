@@ -45,6 +45,8 @@ return [
         'source_url' => 'Source URL',
         'max_items' => 'Max Items',
         'max_items_description' => 'Maximum items to fetch from source',
+        'items_per_page' => 'Number of items per page',
+        'items_per_page_validation' => 'Invalid format of the items per page value',
         'enabled' => 'Enabled',
         'enabled_comment' => 'Flick this switch to enable this RSS source',
         'publish_new_items' => 'Publish new fetched items',
@@ -62,7 +64,11 @@ return [
     'component' => [
         'item_list' => [
             'name' => 'Item List',
-            'description' => 'Displays a list of latest RSS items on the page.',
+            'description' => 'Displays a list of latest RSS items.',
+        ],
+        'paginatable_item_list' => [
+            'name' => 'Paginatable Item List',
+            'description' => 'Displays a paginatable list of RSS items.',
         ],
         'source_list' => [
             'name' => 'Source List',
