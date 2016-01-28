@@ -38,5 +38,12 @@ class SeedAllTables extends Seeder
             'max_items' => 10,
             'is_enabled' => true,
         ]);
+        Source::create([
+            'name' => 'Laravel News Blog',
+            'description' => 'Laravel News Blog',
+            'source_url' => 'http://feed.laravel-news.com/',
+            'max_items' => 10,
+            'is_enabled' => true,
+        ]);
     }
 }

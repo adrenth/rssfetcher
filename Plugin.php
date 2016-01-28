@@ -44,6 +44,7 @@ class Plugin extends PluginBase
     {
         return [
             'Adrenth\RssFetcher\Components\Items' => 'rssItems',
+            'Adrenth\RssFetcher\Components\PaginatableItems' => 'rssPaginatableItems',
             'Adrenth\RssFetcher\Components\Sources' => 'rssSources'
         ];
     }

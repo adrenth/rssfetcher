@@ -45,6 +45,8 @@ return [
         'source_url' => 'Bron URL',
         'max_items' => 'Maximum items',
         'max_items_description' => 'Maximaal aantal items om op te halen van bron',
+        'items_per_page' => 'Aantal items per pagina',
+        'items_per_page_validation' => 'Ongeldig formaat voor items per pagina',
         'enabled' => 'Ingeschakeld',
         'enabled_comment' => 'Schuif om de bron in te schakelen',
         'publish_new_items' => 'Publiceer nieuw binnengehaalde items meteen',
@@ -62,7 +64,11 @@ return [
     'component' => [
         'item_list' => [
             'name' => 'Itemlijst',
-            'description' => 'Toont een lijst van meest recente items op de pagina.',
+            'description' => 'Toont een lijst van meest recente items.',
+        ],
+        'paginatable_item_list' => [
+            'name' => 'Pagineerbare itemlijst',
+            'description' => 'Toont een pagineerbare lijst van items.',
         ],
         'source_list' => [
             'name' => 'Bronlijst',

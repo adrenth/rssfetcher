@@ -2,6 +2,7 @@
 
 namespace Adrenth\RssFetcher\Components;
 
+use Adrenth\RssFetcher\Models\Item;
 use Cms\Classes\ComponentBase;
 use DB;
 use October\Rain\Support\Collection;
@@ -60,11 +61,7 @@ class Items extends ComponentBase
     public static function loadItems($maxItems = 10)
     {
         try {
-            $items = DB::table('adrenth_rssfetcher_items')
-                ->select([
-                    'adrenth_rssfetcher_items.*',
-                    'adrenth_rssfetcher_sources.name AS source'
-                ])
+            $items = Item::select(['adrenth_rssfetcher_items.*', 'adrenth_rssfetcher_sources.name AS source'])
                 ->join('adrenth_rssfetcher_sources', 'adrenth_rssfetcher_items.source_id', '=', 'adrenth_rssfetcher_sources.id')
                 ->where('adrenth_rssfetcher_sources.is_enabled', '=', 1)
                 ->where('adrenth_rssfetcher_items.is_published', '=', 1)

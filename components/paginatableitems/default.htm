@@ -15,3 +15,5 @@
         <p><em>Source: {{ item.source }}{% if item.author %}, {{ item.author }}{% endif %}</em></p>
     </div>
 {% endfor %}
+
+{{ __SELF__.items.render()|raw }}
