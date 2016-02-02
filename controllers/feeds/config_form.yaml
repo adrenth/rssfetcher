@@ -1,0 +1,27 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: adrenth.rssfetcher::lang.feed.feed
+
+# Model Form Field configuration
+form: $/adrenth/rssfetcher/models/feed/fields.yaml
+
+# Model Class name
+modelClass: Adrenth\RssFetcher\Models\Feed
+
+# Default redirect location
+defaultRedirect: adrenth/rssfetcher/feeds
+
+# Create page
+create:
+    title: adrenth.rssfetcher::lang.feed.create_feed
+    redirect: adrenth/rssfetcher/feeds/update/:id
+    redirectClose: adrenth/rssfetcher/feeds
+
+# Update page
+update:
+    title: adrenth.rssfetcher::lang.feed.edit_feed
+    redirect: adrenth/rssfetcher/feeds
+    redirectClose: adrenth/rssfetcher/feeds

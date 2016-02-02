@@ -79,6 +79,10 @@ class Plugin extends PluginBase
             'adrenth.rssfetcher.access_import_export' => [
                 'tab' => 'adrenth.rssfetcher::lang.plugin.name',
                 'label' => 'adrenth.rssfetcher::lang.permissions.access_import_export'
+            ],
+            'adrenth.rssfetcher.access_feeds' => [
+                'tab' => 'adrenth.rssfetcher::lang.plugin.name',
+                'label' => 'adrenth.rssfetcher::lang.permissions.access_feeds'
             ]
         ];
     }
@@ -107,9 +111,25 @@ class Plugin extends PluginBase
                         'icon' => 'icon-files-o',
                         'url' => Backend::url('adrenth/rssfetcher/items'),
                         'permissions' => ['adrenth.rssfetcher.access_items']
+                    ],
+                    'feeds' => [
+                        'label' => 'adrenth.rssfetcher::lang.navigation.side_menu_label_feeds',
+                        'icon' => 'icon-rss',
+                        'url' => Backend::url('adrenth/rssfetcher/feeds'),
+                        'permissions' => ['adrenth.rssfetcher.access_feeds']
                     ]
                 ]
             ]
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function registerFormWidgets()
+    {
+        return [
+            'Adrenth\RssFetcher\FormWidgets\TextWithPrefix' => 'textWithPrefix'
         ];
     }
 }

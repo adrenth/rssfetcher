@@ -13,3 +13,6 @@
 1.0.7: Add filter to item lists and allow user to delete item/sources from list view
 1.0.8: Add a paginatable item component and improve default component templates
 1.0.9: Add export/import functionality for sources and add bulk fetch button to sources list view
+1.0.10:
+  - Add functionality to create feeds
+  - create_feeds_table.php
