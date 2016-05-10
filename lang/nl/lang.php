@@ -11,7 +11,7 @@ return [
         'access_import_export' => 'Toestaan importeren en exporteren',
     ],
     'navigation' => [
-        'menu_label' => 'RSS Fecther',
+        'menu_label' => 'RSS Fetcher',
         'side_menu_label_sources' => 'Bronnen',
         'side_menu_label_items' => 'Items',
     ],
