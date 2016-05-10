@@ -16,3 +16,4 @@
 1.0.10:
   - Add functionality to create feeds
   - create_feeds_table.php
+1.0.11: Updates plugin dependencies and some minor fixes
