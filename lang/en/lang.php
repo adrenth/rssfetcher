@@ -11,7 +11,7 @@ return [
         'access_import_export' => 'Allowed to import and export',
     ],
     'navigation' => [
-        'menu_label' => 'RSS Fecther',
+        'menu_label' => 'RSS Fetcher',
         'side_menu_label_sources' => 'Sources',
         'side_menu_label_items' => 'Items',
         'side_menu_label_feeds' => 'Feeds',
