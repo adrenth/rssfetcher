@@ -4,6 +4,7 @@ use Adrenth\RssFetcher\Models\Feed as FeedModel;
 use Adrenth\RssFetcher\Models\Item;
 use Adrenth\RssFetcher\Models\Source;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Response;
 use Zend\Feed\Exception\InvalidArgumentException;
 use Zend\Feed\Writer\Entry;
@@ -31,7 +32,7 @@ Route::get('/feeds/{path}', function ($path) {
 
     /** @type Collection $sources */
     $sources = $model->sources;
-    $ids = $sources->fetch('id')->toArray();
+    $ids = Arr::pluck($sources->toArray(), 'id');
     $items = [];
 
     Source::with(['items' => function ($builder) use (&$items, $model) {
