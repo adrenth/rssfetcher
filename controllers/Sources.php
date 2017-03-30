@@ -6,13 +6,22 @@ use Adrenth\RssFetcher\Exceptions\SourceNotEnabledException;
 use Adrenth\RssFetcher\Models\Source;
 use ApplicationException;
 use Artisan;
+use Backend\Behaviors\FormController;
+use Backend\Behaviors\ImportExportController;
+use Backend\Behaviors\ListController;
 use Backend\Classes\Controller;
 use BackendMenu;
+use Exception;
 use Flash;
 use Lang;
 
 /**
  * Sources Back-end Controller
+ *
+ * @package Adrenth\RssFetcher\Controllers
+ * @mixin FormController
+ * @mixin ListController
+ * @mixin ImportExportController
  */
 class Sources extends Controller
 {
@@ -48,9 +57,9 @@ class Sources extends Controller
      * Fetches RSS items from source
      *
      * @throws ApplicationException
-     * @return void
+     * @return array
      */
-    public function onFetch()
+    public function index_onFetch()
     {
         try {
             $source = Source::findOrFail($this->params[0]);
@@ -63,22 +72,24 @@ class Sources extends Controller
             Flash::success(Lang::get('adrenth.rssfetcher::lang.source.items_fetch_success'));
         } catch (SourceNotEnabledException $e) {
             Flash::warning($e->getMessage());
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             throw new ApplicationException(
                 Lang::get('adrenth.rssfetcher::lang.source.items_fetch_fail', [
                     'error' => $e->getMessage()
                 ])
             );
         }
+
+        return $this->listRefresh();
     }
 
-    public function onBulkFetch()
+    public function index_onBulkFetch()
     {
         if (($checkedIds = post('checked'))
             && is_array($checkedIds)
             && count($checkedIds)
         ) {
-            foreach ($checkedIds as $sourceId) {
+            foreach ((array) $checkedIds as $sourceId) {
                 if (!$source = Source::find($sourceId)) {
                     continue;
                 }
@@ -89,11 +100,13 @@ class Sources extends Controller
 
                 try {
                     Artisan::call('adrenth:fetch-rss', ['source' => $source->getAttribute('id')]);
-                } catch (\Exception $e) {
+                } catch (Exception $e) {
                     Flash::error($e->getMessage());
                 }
             }
         }
+
+        return $this->listRefresh();
     }
 
     /**
@@ -105,7 +118,7 @@ class Sources extends Controller
             && is_array($checkedIds)
             && count($checkedIds)
         ) {
-            foreach ($checkedIds as $sourceId) {
+            foreach ((array) $checkedIds as $sourceId) {
                 if (!$source = Source::find($sourceId)) {
                     continue;
                 }

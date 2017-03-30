@@ -15,8 +15,7 @@ class CreateSourcesTable extends Migration
 {
     public function up()
     {
-        Schema::create('adrenth_rssfetcher_sources', function (Blueprint $table)
-        {
+        Schema::create('adrenth_rssfetcher_sources', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 40)->nullable();
