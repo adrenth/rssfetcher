@@ -3,6 +3,8 @@
 namespace Adrenth\RssFetcher\Controllers;
 
 use Adrenth\RssFetcher\Models\Item;
+use Backend\Behaviors\FormController;
+use Backend\Behaviors\ListController;
 use BackendMenu;
 use Backend\Classes\Controller;
 
@@ -10,6 +12,8 @@ use Backend\Classes\Controller;
  * Class Items
  *
  * @package Adrenth\RssFetcher\Controllers
+ * @mixin FormController
+ * @mixin ListController
  */
 class Items extends Controller
 {
@@ -50,7 +54,7 @@ class Items extends Controller
             && is_array($checkedIds)
             && count($checkedIds)
         ) {
-            foreach ($checkedIds as $sourceId) {
+            foreach ((array) $checkedIds as $sourceId) {
                 if (!$source = Item::find($sourceId)) {
                     continue;
                 }
