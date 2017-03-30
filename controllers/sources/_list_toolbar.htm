@@ -26,7 +26,6 @@
             data-trigger=".control-list input[type=checkbox]"
             data-trigger-condition="checked"
             data-request-success="$(this).prop('disabled', true)"
-            data-request-redirect="<?= Backend::url('adrenth/rssfetcher/sources') ?>"
             data-stripe-load-indicator>
         <?= e(trans('adrenth.rssfetcher::lang.source.fetch_items')) ?>
     </button>

@@ -70,6 +70,8 @@ class Sources extends Controller
                 ])
             );
         }
+
+        return $this->listRefresh();
     }
 
     public function onBulkFetch()
