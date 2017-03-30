@@ -12,18 +12,7 @@
     ],
     "require": {
         "php": ">=5.4",
-        "composer/installers": "~1.0",
-        "zendframework/zend-feed": "^2.6",
-        "zendframework/zend-http": "^2.5"
-    },
-    "autoload": {
-        "psr-4": {
-            "Adrenth\\RssFetcher\\": ""
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        }
+        "zendframework/zend-feed": "^2.7",
+        "zendframework/zend-http": "^2.6"
     }
 }
