@@ -5,6 +5,7 @@ namespace Adrenth\RssFetcher\Commands;
 use Adrenth\RssFetcher\Models\Item;
 use Adrenth\RssFetcher\Models\Source;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Symfony\Component\Console\Input\InputArgument;
@@ -33,7 +34,7 @@ class FetchRssCommand extends Command
      *
      * @return void
      * @throws \RuntimeException
-     * @throws \Exception
+     * @throws Exception
      */
     public function fire()
     {
@@ -71,7 +72,7 @@ class FetchRssCommand extends Command
                         'description' => strip_tags($item->getDescription()),
                         'category' => implode(', ', $item->getCategories()->getValues()),
                         'comments' => $item->getCommentLink(),
-                        'pub_date' => $item->getDateCreated(),
+                        'pub_date' => $item->getDateCreated()->format('Y-m-d H:i:s'),
                         'is_published' => $source->getAttribute('publish_new_items')
                     ];
 
@@ -89,7 +90,7 @@ class FetchRssCommand extends Command
                 $source->setAttribute('fetched_at', new Carbon());
                 $source->save();
 
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->getOutput()->writeln('<error>' . $e->getMessage() . '</error>');
             }
         });
