@@ -22,17 +22,23 @@ class CreateFeedsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('path')->unique();
-            $table->tinyInteger('max_items')->unsigned();
+            $table->unsignedTinyInteger('max_items');
             $table->boolean('is_enabled');
             $table->timestamps();
         });
 
         Schema::create('adrenth_rssfetcher_feeds_sources', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->integer('feed_id')->unsigned()->index();
-            $table->foreign('feed_id')->references('id')->on('adrenth_rssfetcher_feeds')->onDelete('cascade');
-            $table->integer('source_id')->unsigned()->index();
-            $table->foreign('source_id')->references('id')->on('adrenth_rssfetcher_sources')->onDelete('cascade');
+            $table->unsignedInteger('feed_id');
+            $table->unsignedInteger('source_id');
+            $table->foreign('feed_id')
+                ->references('id')
+                ->on('adrenth_rssfetcher_feeds')
+                ->onDelete('cascade');
+            $table->foreign('source_id')
+                ->references('id')
+                ->on('adrenth_rssfetcher_sources')
+                ->onDelete('cascade');
         });
     }
 

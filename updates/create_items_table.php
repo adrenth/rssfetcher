@@ -15,8 +15,7 @@ class CreateItemsTable extends Migration
 {
     public function up()
     {
-        Schema::create('adrenth_rssfetcher_items', function (Blueprint $table)
-        {
+        Schema::create('adrenth_rssfetcher_items', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('source_id');
