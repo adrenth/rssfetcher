@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('source_id');
-            $table->string('item_id')->unique();
+            $table->string('item_id')->unique('item_id_unique');
             $table->string('title')->nullable();
             $table->string('link')->nullable();
             $table->mediumText('description')->nullable();
@@ -30,7 +30,7 @@ class CreateItemsTable extends Migration
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
 
-            $table->foreign('source_id')
+            $table->foreign('source_id', 'items_source_id_foreign')
                 ->references('id')
                 ->on('adrenth_rssfetcher_sources')
                 ->onDelete('cascade');
@@ -41,5 +41,4 @@ class CreateItemsTable extends Migration
     {
         Schema::dropIfExists('adrenth_rssfetcher_items');
     }
-
 }
