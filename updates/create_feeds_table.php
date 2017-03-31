@@ -21,7 +21,7 @@ class CreateFeedsTable extends Migration
             $table->enum('type', ['rss', 'atom']);
             $table->string('title');
             $table->string('description');
-            $table->string('path')->unique();
+            $table->string('path')->unique('feeds_path_unique');
             $table->unsignedTinyInteger('max_items');
             $table->boolean('is_enabled');
             $table->timestamps();
@@ -31,11 +31,11 @@ class CreateFeedsTable extends Migration
             $table->engine = 'InnoDB';
             $table->unsignedInteger('feed_id');
             $table->unsignedInteger('source_id');
-            $table->foreign('feed_id')
+            $table->foreign('feed_id', 'feeds_sources_feed_id_foreign')
                 ->references('id')
                 ->on('adrenth_rssfetcher_feeds')
                 ->onDelete('cascade');
-            $table->foreign('source_id')
+            $table->foreign('source_id', 'feeds_sources_source_id_foreign')
                 ->references('id')
                 ->on('adrenth_rssfetcher_sources')
                 ->onDelete('cascade');

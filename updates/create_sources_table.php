@@ -26,7 +26,6 @@ class CreateSourcesTable extends Migration
             $table->boolean('is_enabled')->default(false);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
-
         });
     }
 
