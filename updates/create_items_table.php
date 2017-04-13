@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->unsignedInteger('source_id');
-            $table->string('item_id')->unique('item_id_unique');
+            $table->string('item_id', 191)->unique('item_id_unique');
             $table->string('title')->nullable();
             $table->string('link')->nullable();
             $table->mediumText('description')->nullable();
