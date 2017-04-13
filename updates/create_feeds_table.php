@@ -21,7 +21,7 @@ class CreateFeedsTable extends Migration
             $table->enum('type', ['rss', 'atom']);
             $table->string('title');
             $table->string('description');
-            $table->string('path')->unique('feeds_path_unique');
+            $table->string('path', 191)->unique('feeds_path_unique');
             $table->unsignedTinyInteger('max_items');
             $table->boolean('is_enabled');
             $table->timestamps();
