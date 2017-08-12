@@ -37,7 +37,7 @@ Route::get('/feeds/{path}', function ($path) {
 
     Source::with(['items' => function ($builder) use (&$items, $model) {
         $items = $builder->where('is_published', '=', 1)
-            ->whereDate('pub_date', '=', date('Y-m-d'))
+            ->whereDate('pub_date', '<=', date('Y-m-d'))
             ->orderBy('pub_date', 'desc')
             ->limit($model->getAttribute('max_items'))
             ->get();
