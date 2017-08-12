@@ -102,6 +102,7 @@ class FetchRssCommand extends Command
                 $source->save();
 
             } catch (Exception $e) {
+                \Log::error($e);
                 $this->getOutput()->writeln('<error>' . $e->getMessage() . '</error>');
             }
         });
