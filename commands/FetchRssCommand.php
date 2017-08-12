@@ -64,15 +64,17 @@ class FetchRssCommand extends Command
 
                     $this->getOutput()->writeln($itemCount . '. ' . $item->getTitle());
 
+                    $dateCreated = $item->getDateCreated();
+
                     $attributes = [
                         'item_id' => $item->getId(),
                         'source_id' => $source->getAttribute('id'),
                         'title' => $item->getTitle(),
                         'link' => $item->getLink(),
-                        'description' => strip_tags($item->getDescription()),
+                        'description' => strip_tags($item->getContent()),
                         'category' => implode(', ', $item->getCategories()->getValues()),
                         'comments' => $item->getCommentLink(),
-                        'pub_date' => $item->getDateCreated()->format('Y-m-d H:i:s'),
+                        'pub_date' => $dateCreated !== null ? $item->getDateCreated()->format('Y-m-d H:i:s') : null,
                         'is_published' => $source->getAttribute('publish_new_items')
                     ];
 
