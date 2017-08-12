@@ -31,7 +31,16 @@ class FetchRssCommand extends Command
 
     /**
      * Execute the console command.
+     */
+    public function handle()
+    {
+        $this->fire();
+    }
+
+    /**
+     * Execute the console command.
      *
+     * @deprecated Will be dropped when OctoberCMS supports Laravel 5.5
      * @return void
      * @throws \RuntimeException
      * @throws Exception
