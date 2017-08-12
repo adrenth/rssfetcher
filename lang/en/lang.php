@@ -66,6 +66,8 @@ return [
         'return_to_items' => 'Return to items list',
         'delete_confirm' => 'Are you sure?',
         'hide_published' => 'Hide published',
+        'publish' => 'Publish',
+        'unpublish' => 'Unpublish'
     ],
     'feed' => [
         'feed' => 'Feed',

@@ -21,3 +21,4 @@
 1.0.13: Bugfixes and optimizations
 1.0.14: Change database foreign and unique key lengths
 1.0.15: Change database column lengths to support utf8mb4
+1.1.0: Bugfixes and improvements; minimum requirement is now PHP 5.6

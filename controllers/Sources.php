@@ -59,7 +59,7 @@ class Sources extends Controller
      * @throws ApplicationException
      * @return array
      */
-    public function index_onFetch()
+    public function onFetch()
     {
         try {
             $source = Source::findOrFail($this->params[0]);
@@ -83,26 +83,23 @@ class Sources extends Controller
         return $this->listRefresh();
     }
 
+    // @codingStandardsIgnoreStart
+
     public function index_onBulkFetch()
     {
-        if (($checkedIds = post('checked'))
-            && is_array($checkedIds)
-            && count($checkedIds)
-        ) {
-            foreach ((array) $checkedIds as $sourceId) {
-                if (!$source = Source::find($sourceId)) {
-                    continue;
-                }
+        foreach ($this->getCheckedIds() as $sourceId) {
+            if (!$source = Source::find($sourceId)) {
+                continue;
+            }
 
-                if (!$source->getAttribute('is_enabled')) {
-                    continue;
-                }
+            if (!$source->getAttribute('is_enabled')) {
+                continue;
+            }
 
-                try {
-                    Artisan::call('adrenth:fetch-rss', ['source' => $source->getAttribute('id')]);
-                } catch (Exception $e) {
-                    Flash::error($e->getMessage());
-                }
+            try {
+                Artisan::call('adrenth:fetch-rss', ['source' => $source->getAttribute('id')]);
+            } catch (Exception $e) {
+                Flash::error($e->getMessage());
             }
         }
 
@@ -111,22 +108,37 @@ class Sources extends Controller
 
     /**
      * @return mixed
+     * @throws Exception
      */
     public function index_onDelete()
+    {
+        foreach ($this->getCheckedIds() as $sourceId) {
+            if (!$source = Source::find($sourceId)) {
+                continue;
+            }
+
+            $source->delete();
+        }
+
+        return $this->listRefresh();
+    }
+
+    // @codingStandardsIgnoreEnd
+
+    /**
+     * Check checked ID's from POST request.
+     *
+     * @return array
+     */
+    private function getCheckedIds(): array
     {
         if (($checkedIds = post('checked'))
             && is_array($checkedIds)
             && count($checkedIds)
         ) {
-            foreach ((array) $checkedIds as $sourceId) {
-                if (!$source = Source::find($sourceId)) {
-                    continue;
-                }
-
-                $source->delete();
-            }
+            return $checkedIds;
         }
 
-        return $this->listRefresh();
+        return [];
     }
 }

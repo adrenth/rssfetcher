@@ -3,6 +3,7 @@
 namespace Adrenth\RssFetcher\Models;
 
 use Backend\Models\ImportModel;
+use Exception;
 
 /**
  * Class SourceImport
@@ -31,7 +32,7 @@ class SourceImport extends ImportModel
      */
     public function importData($results, $sessionKey = null)
     {
-        foreach ($results as $row => $data) {
+        foreach ((array) $results as $row => $data) {
             try {
                 $source = Source::make();
 
@@ -44,7 +45,7 @@ class SourceImport extends ImportModel
                 $source->forceSave();
 
                 $this->logCreated();
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->logError($row, $e->getMessage());
             }
         }

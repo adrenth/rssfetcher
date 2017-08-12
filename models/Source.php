@@ -20,16 +20,6 @@ class Source extends Model
     /**
      * {@inheritdoc}
      */
-    protected $guarded = ['*'];
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $fillable = [];
-
-    /**
-     * {@inheritdoc}
-     */
     protected $dates = [
         'fetched_at'
     ];
@@ -49,10 +39,10 @@ class Source extends Model
      */
     public $hasMany = [
         'items' => [
-            'Adrenth\RssFetcher\Models\Item',
+            Item::class,
         ],
         'items_count' => [
-            'Adrenth\RssFetcher\Models\Item',
+            Item::class,
             'count' => true
         ]
     ];

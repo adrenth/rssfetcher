@@ -11,8 +11,8 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
-        "zendframework/zend-feed": "^2.7",
+        "php": ">=5.6",
+        "zendframework/zend-feed": "^2.8",
         "zendframework/zend-http": "^2.6"
     }
 }
