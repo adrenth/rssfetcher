@@ -33,7 +33,7 @@ class Plugin extends PluginBase
     {
         $this->registerConsoleCommand(
             'Adrenth.RssFetcher',
-            'Adrenth\RssFetcher\Commands\FetchRssCommand'
+            Commands\FetchRssCommand::class
         );
     }
 
@@ -43,9 +43,9 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'Adrenth\RssFetcher\Components\Items' => 'rssItems',
-            'Adrenth\RssFetcher\Components\PaginatableItems' => 'rssPaginatableItems',
-            'Adrenth\RssFetcher\Components\Sources' => 'rssSources'
+            Components\Items::class => 'rssItems',
+            Components\PaginatableItems::class => 'rssPaginatableItems',
+            Components\Sources::class => 'rssSources'
         ];
     }
 
@@ -129,7 +129,7 @@ class Plugin extends PluginBase
     public function registerFormWidgets()
     {
         return [
-            'Adrenth\RssFetcher\FormWidgets\TextWithPrefix' => 'textWithPrefix'
+            FormWidgets\TextWithPrefix::class => 'textWithPrefix'
         ];
     }
 }

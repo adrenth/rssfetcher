@@ -4,6 +4,7 @@ namespace Adrenth\RssFetcher\Components;
 
 use Adrenth\RssFetcher\Models\Source;
 use Cms\Classes\ComponentBase;
+use InvalidArgumentException;
 use October\Rain\Support\Collection;
 
 /**
@@ -15,6 +16,7 @@ class Sources extends ComponentBase
 {
     /** @type Collection */
     public $sources;
+
     /**
      * {@inheritdoc}
      */
@@ -50,9 +52,8 @@ class Sources extends ComponentBase
     public static function loadSources()
     {
         try {
-            $sources = Source::where('is_enabled', '=', '1')
-                ->orderBy('name', 'asc');
-        } catch (\InvalidArgumentException $e) {
+            $sources = Source::where('is_enabled', '=', '1')->orderBy('name');
+        } catch (InvalidArgumentException $e) {
             return [];
         }
 

@@ -4,7 +4,7 @@ namespace Adrenth\RssFetcher\Components;
 
 use Adrenth\RssFetcher\Models\Item;
 use Cms\Classes\ComponentBase;
-use DB;
+use InvalidArgumentException;
 use October\Rain\Support\Collection;
 
 /**
@@ -62,12 +62,17 @@ class Items extends ComponentBase
     {
         try {
             $items = Item::select(['adrenth_rssfetcher_items.*', 'adrenth_rssfetcher_sources.name AS source'])
-                ->join('adrenth_rssfetcher_sources', 'adrenth_rssfetcher_items.source_id', '=', 'adrenth_rssfetcher_sources.id')
+                ->join(
+                    'adrenth_rssfetcher_sources',
+                    'adrenth_rssfetcher_items.source_id',
+                    '=',
+                    'adrenth_rssfetcher_sources.id'
+                )
                 ->where('adrenth_rssfetcher_sources.is_enabled', '=', 1)
                 ->where('adrenth_rssfetcher_items.is_published', '=', 1)
                 ->orderBy('adrenth_rssfetcher_items.pub_date', 'desc')
                 ->limit($maxItems);
-        } catch (\InvalidArgumentException $e) {
+        } catch (InvalidArgumentException $e) {
             return [];
         }
 

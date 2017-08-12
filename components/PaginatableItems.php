@@ -4,7 +4,6 @@ namespace Adrenth\RssFetcher\Components;
 
 use Adrenth\RssFetcher\Models\Item;
 use Cms\Classes\ComponentBase;
-use Db;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
@@ -61,7 +60,12 @@ class PaginatableItems extends ComponentBase
     {
         try {
             $items = Item::select(['adrenth_rssfetcher_items.*', 'adrenth_rssfetcher_sources.name AS source'])
-                 ->join('adrenth_rssfetcher_sources', 'adrenth_rssfetcher_items.source_id', '=', 'adrenth_rssfetcher_sources.id')
+                 ->join(
+                     'adrenth_rssfetcher_sources',
+                     'adrenth_rssfetcher_items.source_id',
+                     '=',
+                     'adrenth_rssfetcher_sources.id'
+                 )
                  ->where('adrenth_rssfetcher_sources.is_enabled', '=', 1)
                  ->where('adrenth_rssfetcher_items.is_published', '=', 1)
                  ->orderBy('adrenth_rssfetcher_items.pub_date', 'desc')

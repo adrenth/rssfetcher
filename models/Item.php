@@ -3,6 +3,7 @@
 namespace Adrenth\RssFetcher\Models;
 
 use Model;
+use October\Rain\Database\Builder;
 
 /**
  * Class Item
@@ -15,11 +16,6 @@ class Item extends Model
      * {@inheritdoc}
      */
     public $table = 'adrenth_rssfetcher_items';
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $guarded = ['*'];
 
     /**
      * {@inheritdoc}
@@ -48,17 +44,17 @@ class Item extends Model
      * {@inheritdoc}
      */
     public $belongsTo = [
-        'source' => 'Adrenth\RssFetcher\Models\Source'
+        'source' => Source::class
     ];
 
     /**
      * Allows filtering for specifc sources
      *
-     * @param October\Rain\Database\Builder $query QueryBuilder
+     * @param Builder $query
      * @param array $sources List of source ids
-     * @return October\Rain\Database\Builder
+     * @return Builder
      */
-    public function scopeFilterSources($query, array $sources = [])
+    public function scopeFilterSources(Builder $query, array $sources = [])
     {
         return $query->whereHas('source', function ($q) use ($sources) {
             $q->whereIn('id', $sources);

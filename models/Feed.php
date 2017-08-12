@@ -22,19 +22,9 @@ class Feed extends Model
     /**
      * {@inheritdoc}
      */
-    protected $guarded = ['*'];
-
-    /**
-     * {@inheritdoc}
-     */
-    protected $fillable = [];
-
-    /**
-     * {@inheritdoc}
-     */
     public $belongsToMany = [
         'sources' => [
-            'Adrenth\RssFetcher\Models\Source',
+            Source::class,
             'table' => 'adrenth_rssfetcher_feeds_sources',
             'order' => 'name',
         ],
