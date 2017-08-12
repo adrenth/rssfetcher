@@ -7,6 +7,7 @@ use Backend\Behaviors\FormController;
 use Backend\Behaviors\ListController;
 use BackendMenu;
 use Backend\Classes\Controller;
+use Exception;
 
 /**
  * Class Items
@@ -45,24 +46,74 @@ class Items extends Controller
         BackendMenu::setContext('Adrenth.RssFetcher', 'rssfetcher', 'items');
     }
 
+    // @codingStandardsIgnoreStart
+
     /**
-     * @return mixed
+     * @return array
+     * @throws Exception
      */
     public function index_onDelete()
+    {
+        foreach ($this->getCheckedIds() as $sourceId) {
+            if (!$source = Item::find($sourceId)) {
+                continue;
+            }
+
+            $source->delete();
+        }
+
+        return $this->listRefresh();
+    }
+
+    /**
+     * @return array
+     */
+    public function index_onPublish()
+    {
+        return $this->publishItem(true);
+    }
+
+    /**
+     * @return array
+     */
+    public function index_onUnpublish()
+    {
+        return $this->publishItem(false);
+    }
+
+    // @codingStandardsIgnoreEnd
+
+    /**
+     * @param $publish
+     * @return array
+     */
+    private function publishItem($publish)
+    {
+        foreach ($this->getCheckedIds() as $sourceId) {
+            if (!$source = Item::find($sourceId)) {
+                continue;
+            }
+
+            $source->update(['is_published' => $publish]);
+        }
+
+        return $this->listRefresh();
+    }
+
+    /**
+     * Check checked ID's from POST request.
+     *
+     * @return array
+     */
+    private function getCheckedIds(): array
     {
         if (($checkedIds = post('checked'))
             && is_array($checkedIds)
             && count($checkedIds)
         ) {
-            foreach ((array) $checkedIds as $sourceId) {
-                if (!$source = Item::find($sourceId)) {
-                    continue;
-                }
-
-                $source->delete();
-            }
+            return $checkedIds;
         }
 
-        return $this->listRefresh();
+        return [];
     }
 }

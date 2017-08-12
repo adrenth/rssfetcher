@@ -68,6 +68,8 @@ return [
         'hide_published' => 'Verberg gepubliceerd',
         'import_sources' => 'Importeer bronnen',
         'export_sources' => 'Exporteer bronnen',
+        'publish' => 'Publiceren',
+        'unpublish' => 'Niet publiceren',
     ],
     'feed' => [
         'feed' => 'Feed',
