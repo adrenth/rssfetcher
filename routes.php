@@ -21,14 +21,14 @@ Route::get('/feeds/{path}', function ($path) {
 
     $feed = new Feed();
     $feed->setTitle($model->getAttribute('title'))
-         ->setDescription($model->getAttribute('description'))
-         ->setBaseUrl(Url::to('/'))
-         ->setGenerator('OctoberCMS/Adrenth.RssFetcher')
-         ->setId('Adrenth.RssFecther.' . $model->getAttribute('id'))
-         ->setLink(Url::to('/feeds/' . $path))
-         ->setFeedLink(Url::to('/feeds/' . $path), $model->getAttribute('type'))
-         ->setDateModified()
-         ->addAuthor(['name' => 'OctoberCMS']);
+        ->setDescription($model->getAttribute('description'))
+        ->setBaseUrl(Url::to('/'))
+        ->setGenerator('OctoberCMS/Adrenth.RssFetcher')
+        ->setId('Adrenth.RssFecther.' . $model->getAttribute('id'))
+        ->setLink(Url::to('/feeds/' . $path))
+        ->setFeedLink(Url::to('/feeds/' . $path), $model->getAttribute('type'))
+        ->setDateModified()
+        ->addAuthor(['name' => 'OctoberCMS']);
 
     /** @type Collection $sources */
     $sources = $model->sources;
@@ -54,8 +54,7 @@ Route::get('/feeds/{path}', function ($path) {
                 ->setTitle($item->getAttribute('title'))
                 ->setDescription($item->getAttribute('description'))
                 ->setLink($item->getAttribute('link'))
-                ->setDateModified($item->getAttribute('pub_date'))
-            ;
+                ->setDateModified($item->getAttribute('pub_date'));
 
             $comments = $item->getAttribute('comments');
             if (!empty($comments)) {
