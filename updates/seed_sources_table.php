@@ -1,9 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Updates;
 
 use Adrenth\RssFetcher\Models\Source;
 use October\Rain\Database\Updates\Seeder;
+
+/** @noinspection AutoloadingIssuesInspection */
 
 /**
  * Class SeedAllTables

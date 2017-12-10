@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Adrenth\RssFetcher\Models\Feed as FeedModel;
 use Adrenth\RssFetcher\Models\Item;
 use Adrenth\RssFetcher\Models\Source;
@@ -12,7 +14,7 @@ use Zend\Feed\Writer\Feed;
 
 Route::get('/feeds/{path}', function ($path) {
 
-    /** @type FeedModel $model */
+    /** @var FeedModel $model */
     $model = FeedModel::where('path', '=', $path)->first();
 
     if ($model === null) {
@@ -30,7 +32,7 @@ Route::get('/feeds/{path}', function ($path) {
         ->setDateModified()
         ->addAuthor(['name' => 'OctoberCMS']);
 
-    /** @type Collection $sources */
+    /** @var Collection $sources */
     $sources = $model->sources;
     $ids = Arr::pluck($sources->toArray(), 'id');
     $items = [];
@@ -45,7 +47,7 @@ Route::get('/feeds/{path}', function ($path) {
         ->where('is_enabled', '=', 1)
         ->get();
 
-    /** @type Item $item */
+    /** @var Item $item */
     foreach ($items as $item) {
         try {
             $entry = new Entry();

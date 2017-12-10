@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Models;
 
 use Backend\Models\ExportModel;

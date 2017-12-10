@@ -1,7 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Controllers;
 
+use Backend\Behaviors\FormController;
+use Backend\Behaviors\ListController;
 use BackendMenu;
 use Backend\Classes\Controller;
 
@@ -9,6 +13,8 @@ use Backend\Classes\Controller;
  * Class Feeds
  *
  * @package Adrenth\RssFetcher\Controllers
+ * @mixin FormController
+ * @mixin ListController
  */
 class Feeds extends Controller
 {
@@ -20,10 +26,10 @@ class Feeds extends Controller
         'Backend.Behaviors.ListController'
     ];
 
-    /** @type string */
+    /** @var string */
     public $formConfig = 'config_form.yaml';
 
-    /** @type string */
+    /** @var string */
     public $listConfig = 'config_list.yaml';
 
     /**

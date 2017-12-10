@@ -1,10 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Updates;
 
 use Illuminate\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
 use Schema;
+
+/** @noinspection AutoloadingIssuesInspection */
 
 /**
  * Class CreateSourcesTable

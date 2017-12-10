@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Controllers;
 
 use Adrenth\RssFetcher\Exceptions\SourceNotEnabledException;
@@ -34,13 +36,13 @@ class Sources extends Controller
         'Backend.Behaviors.ImportExportController',
     ];
 
-    /** @type string */
+    /** @var string */
     public $formConfig = 'config_form.yaml';
 
-    /** @type string */
+    /** @var string */
     public $listConfig = 'config_list.yaml';
 
-    /** @type string */
+    /** @var string */
     public $importExportConfig = 'config_import_export.yaml';
 
     /**
@@ -59,7 +61,7 @@ class Sources extends Controller
      * @throws ApplicationException
      * @return array
      */
-    public function onFetch()
+    public function onFetch(): array
     {
         try {
             $source = Source::findOrFail($this->params[0]);
@@ -85,7 +87,10 @@ class Sources extends Controller
 
     // @codingStandardsIgnoreStart
 
-    public function index_onBulkFetch()
+    /**
+     * @return array
+     */
+    public function index_onBulkFetch(): array
     {
         foreach ($this->getCheckedIds() as $sourceId) {
             if (!$source = Source::find($sourceId)) {
@@ -107,10 +112,10 @@ class Sources extends Controller
     }
 
     /**
-     * @return mixed
+     * @return array
      * @throws Exception
      */
-    public function index_onDelete()
+    public function index_onDelete(): array
     {
         foreach ($this->getCheckedIds() as $sourceId) {
             if (!$source = Source::find($sourceId)) {

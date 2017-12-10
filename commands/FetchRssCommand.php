@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Commands;
 
 use Adrenth\RssFetcher\Models\Item;
@@ -8,6 +10,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use Log;
 use Symfony\Component\Console\Input\InputArgument;
 use Zend\Feed\Reader\Entry\Rss;
 use Zend\Feed\Reader\Reader;
@@ -31,21 +34,13 @@ class FetchRssCommand extends Command
 
     /**
      * Execute the console command.
-     */
-    public function handle()
-    {
-        $this->fire();
-    }
-
-    /**
-     * Execute the console command.
      *
      * @deprecated Will be dropped when OctoberCMS supports Laravel 5.5
      * @return void
      * @throws \RuntimeException
      * @throws Exception
      */
-    public function fire()
+    public function handle()
     {
         $sourceId = $this->argument('source');
         $sources = new Collection();
@@ -67,7 +62,7 @@ class FetchRssCommand extends Command
 
                 $itemCount = 0;
 
-                /** @type Rss $item */
+                /** @var Rss $item */
                 foreach ($channel as $item) {
                     ++$itemCount;
 
@@ -102,7 +97,7 @@ class FetchRssCommand extends Command
                 $source->save();
 
             } catch (Exception $e) {
-                \Log::error($e);
+                Log::error($e);
                 $this->getOutput()->writeln('<error>' . $e->getMessage() . '</error>');
             }
         });
@@ -111,7 +106,7 @@ class FetchRssCommand extends Command
     /**
      * {@inheritdoc}
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             ['source', InputArgument::OPTIONAL, 'Source ID'],

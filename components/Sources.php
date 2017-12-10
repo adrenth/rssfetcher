@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Components;
 
 use Adrenth\RssFetcher\Models\Source;
@@ -14,7 +16,9 @@ use October\Rain\Support\Collection;
  */
 class Sources extends ComponentBase
 {
-    /** @type Collection */
+    /**
+     * @var Collection
+     */
     public $sources;
 
     /**
@@ -31,7 +35,7 @@ class Sources extends ComponentBase
     /**
      * {@inheritdoc}
      */
-    public function defineProperties()
+    public function defineProperties(): array
     {
         return [];
     }
@@ -47,9 +51,9 @@ class Sources extends ComponentBase
     /**
      * Load Sources
      *
-     * @return array|static[]
+     * @return array
      */
-    public static function loadSources()
+    public static function loadSources(): array
     {
         try {
             $sources = Source::where('is_enabled', '=', '1')->orderBy('name');
@@ -57,6 +61,6 @@ class Sources extends ComponentBase
             return [];
         }
 
-        return $sources->get();
+        return $sources->get()->toArray();
     }
 }

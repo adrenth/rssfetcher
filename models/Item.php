@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Models;
 
 use Model;
@@ -54,7 +56,7 @@ class Item extends Model
      * @param array $sources List of source ids
      * @return Builder
      */
-    public function scopeFilterSources(Builder $query, array $sources = [])
+    public function scopeFilterSources(Builder $query, array $sources = []): Builder
     {
         return $query->whereHas('source', function ($q) use ($sources) {
             $q->whereIn('id', $sources);

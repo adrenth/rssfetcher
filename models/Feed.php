@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Models;
 
 use Model;
@@ -30,7 +32,7 @@ class Feed extends Model
         ],
     ];
 
-    /** @type array */
+    /** @var array */
     public $rules = [
         'title' => 'required',
         'description' => 'required',

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Controllers;
 
 use Adrenth\RssFetcher\Models\Item;
@@ -27,12 +29,12 @@ class Items extends Controller
     ];
 
     /**
-     * @type string
+     * @var string
      */
     public $formConfig = 'config_form.yaml';
 
     /**
-     * @type string
+     * @var string
      */
     public $listConfig = 'config_list.yaml';
 
@@ -52,7 +54,7 @@ class Items extends Controller
      * @return array
      * @throws Exception
      */
-    public function index_onDelete()
+    public function index_onDelete(): array
     {
         foreach ($this->getCheckedIds() as $sourceId) {
             if (!$source = Item::find($sourceId)) {
@@ -87,7 +89,7 @@ class Items extends Controller
      * @param $publish
      * @return array
      */
-    private function publishItem($publish)
+    private function publishItem($publish): array
     {
         foreach ($this->getCheckedIds() as $sourceId) {
             if (!$source = Item::find($sourceId)) {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\ReportWidgets;
 
 use Adrenth\RssFetcher\Components\Items;
@@ -16,7 +18,7 @@ class Headlines extends ReportWidgetBase
     /**
      * @return array
      */
-    public function widgetDetails()
+    public function widgetDetails(): array
     {
         return [
             'name' => 'adrenth.rssfetcher::lang.report_widget.headlines.name',
@@ -27,7 +29,7 @@ class Headlines extends ReportWidgetBase
     /**
      * {@inheritdoc}
      */
-    public function defineProperties()
+    public function defineProperties(): array
     {
         return [
             'title' => [
