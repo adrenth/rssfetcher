@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Models;
 
 use Backend\Models\ImportModel;
@@ -20,7 +22,7 @@ class SourceImport extends ImportModel
     /**
      * Validation rules
      *
-     * @type array
+     * @var array
      */
     public $rules = [
         'name' => 'required',

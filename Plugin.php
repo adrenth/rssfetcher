@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher;
 
 use Backend;
@@ -8,14 +10,14 @@ use System\Classes\PluginBase;
 /**
  * Class Plugin
  *
- * @package Adrenth\RssHeadlines
+ * @package Adrenth\RssFetcher
  */
 class Plugin extends PluginBase
 {
     /**
      * {@inheritdoc}
      */
-    public function pluginDetails()
+    public function pluginDetails(): array
     {
         return [
             'name' => 'adrenth.rssfetcher::lang.plugin.name',
@@ -40,7 +42,7 @@ class Plugin extends PluginBase
     /**
      * {@inheritdoc}
      */
-    public function registerComponents()
+    public function registerComponents(): array
     {
         return [
             Components\Items::class => 'rssItems',
@@ -52,10 +54,10 @@ class Plugin extends PluginBase
     /**
      * {@inheritdoc}
      */
-    public function registerReportWidgets()
+    public function registerReportWidgets(): array
     {
         return [
-            'Adrenth\RssFetcher\ReportWidgets\Headlines' => [
+            ReportWidgets\Headlines::class => [
                 'label' => 'RSS Headlines',
                 'code' => 'headlines'
             ]
@@ -65,7 +67,7 @@ class Plugin extends PluginBase
     /**
      * {@inheritdoc}
      */
-    public function registerPermissions()
+    public function registerPermissions(): array
     {
         return [
             'adrenth.rssfetcher.access_sources' => [
@@ -90,7 +92,7 @@ class Plugin extends PluginBase
     /**
      * {@inheritdoc}
      */
-    public function registerNavigation()
+    public function registerNavigation(): array
     {
         return [
             'rssfetcher' => [
@@ -126,7 +128,7 @@ class Plugin extends PluginBase
     /**
      * {@inheritdoc}
      */
-    public function registerFormWidgets()
+    public function registerFormWidgets(): array
     {
         return [
             FormWidgets\TextWithPrefix::class => 'textWithPrefix'

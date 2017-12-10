@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Components;
 
 use Adrenth\RssFetcher\Models\Item;
 use Cms\Classes\ComponentBase;
 use Illuminate\Pagination\LengthAwarePaginator;
+use InvalidArgumentException;
 
 /**
  * Class PaginatableItems
@@ -13,7 +16,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
  */
 class PaginatableItems extends ComponentBase
 {
-    /** @type LengthAwarePaginator */
+    /**
+     * @var LengthAwarePaginator
+     */
     public $items;
 
     /**
@@ -30,7 +35,7 @@ class PaginatableItems extends ComponentBase
     /**
      * {@inheritdoc}
      */
-    public function defineProperties()
+    public function defineProperties(): array
     {
         return [
             'itemsPerPage' => [
@@ -70,7 +75,7 @@ class PaginatableItems extends ComponentBase
                  ->where('adrenth_rssfetcher_items.is_published', '=', 1)
                  ->orderBy('adrenth_rssfetcher_items.pub_date', 'desc')
                  ->paginate($this->property('itemsPerPage'));
-        } catch (\InvalidArgumentException $e) {
+        } catch (InvalidArgumentException $e) {
             return [];
         }
 

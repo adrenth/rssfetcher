@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Components;
 
 use Adrenth\RssFetcher\Models\Item;
@@ -15,7 +17,7 @@ use October\Rain\Support\Collection;
 class Items extends ComponentBase
 {
     /**
-     * @type Collection
+     * @var Collection
      */
     public $items;
 
@@ -33,7 +35,7 @@ class Items extends ComponentBase
     /**
      * {@inheritdoc}
      */
-    public function defineProperties()
+    public function defineProperties(): array
     {
         return [
             'maxItems' => [
@@ -56,9 +58,9 @@ class Items extends ComponentBase
      * Load Items
      *
      * @param int $maxItems
-     * @return array|static[]
+     * @return array
      */
-    public static function loadItems($maxItems = 10)
+    public static function loadItems($maxItems = 10): array
     {
         try {
             $items = Item::select(['adrenth_rssfetcher_items.*', 'adrenth_rssfetcher_sources.name AS source'])
@@ -76,6 +78,6 @@ class Items extends ComponentBase
             return [];
         }
 
-        return $items->get();
+        return $items->get()->toArray();
     }
 }

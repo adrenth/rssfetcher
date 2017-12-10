@@ -1,10 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Updates;
 
 use Illuminate\Database\Schema\Blueprint;
 use Schema;
 use October\Rain\Database\Updates\Migration;
+
+/** @noinspection AutoloadingIssuesInspection */
 
 /**
  * Class CreateFeedsTable

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\Models;
 
 use Model;
@@ -27,7 +29,7 @@ class Source extends Model
     /**
      * Validation rules
      *
-     * @type array
+     * @var array
      */
     public $rules = [
         'name' => 'required',

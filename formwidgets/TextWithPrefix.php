@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Adrenth\RssFetcher\FormWidgets;
 
 use Backend\Classes\FormWidgetBase;
@@ -30,6 +32,7 @@ class TextWithPrefix extends FormWidgetBase
     public function render()
     {
         $this->prepareVars();
+
         return $this->makePartial('textwithprefix');
     }
 
@@ -41,13 +44,5 @@ class TextWithPrefix extends FormWidgetBase
         $this->vars['name'] = $this->formField->getName();
         $this->vars['value'] = $this->getLoadValue();
         $this->vars['model'] = $this->model;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSaveValue($value)
-    {
-        return $value;
     }
 }
