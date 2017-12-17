@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Adrenth\RssFetcher\Commands;
 
+use Adrenth\RssFetcher\Classes\Reader\Extension\Media\Entry;
 use Adrenth\RssFetcher\Models\Item;
 use Adrenth\RssFetcher\Models\Source;
 use Carbon\Carbon;
@@ -12,8 +13,10 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Log;
 use Symfony\Component\Console\Input\InputArgument;
+use System\Models\File;
 use Zend\Feed\Reader\Entry\Rss;
 use Zend\Feed\Reader\Reader;
+use Zend\Http\Client;
 
 /**
  * Class FetchRssCommand
@@ -62,31 +65,33 @@ class FetchRssCommand extends Command
 
                 $itemCount = 0;
 
-                /** @var Rss $item */
-                foreach ($channel as $item) {
+                /** @var Rss $entry */
+                foreach ($channel as $entry) {
                     ++$itemCount;
 
-                    $this->getOutput()->writeln($itemCount . '. ' . $item->getTitle());
+                    $this->getOutput()->writeln($itemCount . '. ' . $entry->getTitle());
 
-                    $dateCreated = $item->getDateCreated();
+                    $dateCreated = $entry->getDateCreated();
 
                     $attributes = [
-                        'item_id' => $item->getId(),
+                        'item_id' => $entry->getId(),
                         'source_id' => $source->getAttribute('id'),
-                        'title' => $item->getTitle(),
-                        'link' => $item->getLink(),
-                        'description' => strip_tags($item->getContent()),
-                        'category' => implode(', ', $item->getCategories()->getValues()),
-                        'comments' => $item->getCommentLink(),
-                        'pub_date' => $dateCreated !== null ? $item->getDateCreated()->format('Y-m-d H:i:s') : null,
+                        'title' => $entry->getTitle(),
+                        'link' => $entry->getLink(),
+                        'description' => strip_tags($entry->getContent()),
+                        'category' => implode(', ', $entry->getCategories()->getValues()),
+                        'comments' => $entry->getCommentLink(),
+                        'pub_date' => $dateCreated !== null ? $entry->getDateCreated()->format('Y-m-d H:i:s') : null,
                         'is_published' => $source->getAttribute('publish_new_items')
                     ];
 
-                    if ($item->getAuthors() !== null && is_array($item->getAuthors())) {
-                        $attributes['author'] = implode(', ', $item->getAuthors());
+                    if ($entry->getAuthors() !== null && is_array($entry->getAuthors())) {
+                        $attributes['author'] = implode(', ', $entry->getAuthors());
                     }
 
-                    Item::firstOrCreate($attributes);
+                    $item = Item::firstOrCreate($attributes);
+
+                    $this->extractImagesFromEntry($item, $entry);
 
                     if ($maxItems > 0 && $itemCount >= $maxItems) {
                         break;
@@ -101,6 +106,46 @@ class FetchRssCommand extends Command
                 $this->getOutput()->writeln('<error>' . $e->getMessage() . '</error>');
             }
         });
+    }
+
+    /**
+     * @param Item $item
+     * @param Rss $entry
+     * @throws \Zend\Http\Exception\RuntimeException
+     * @throws \Zend\Http\Client\Exception\RuntimeException
+     */
+    private function extractImagesFromEntry(Item $item, Rss $entry)
+    {
+        /** @var Entry $extension */
+        $extension = $entry->getExtension('Media');
+
+        if ($extension === null || $extension->getMediaContentMedium() !== 'image') {
+            return;
+        }
+
+        $url = $extension->getMediaContentUrl();
+
+        if ($url === null || $url === '') {
+            return;
+        }
+
+        $this->downloadImageAndAttachToItem($item, $url);
+    }
+
+    /**
+     * @param Item $item
+     * @param string $url
+     * @throws \Zend\Http\Exception\RuntimeException
+     * @throws \Zend\Http\Client\Exception\RuntimeException
+     */
+    private function downloadImageAndAttachToItem(Item $item, string $url)
+    {
+        $response = (new Client($url))->send();
+
+        if ($response->isSuccess()) {
+            $file = (new File)->fromData($response->getBody(), md5($url));
+            $item->images()->add($file);
+        }
     }
 
     /**

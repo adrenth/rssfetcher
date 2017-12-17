@@ -6,6 +6,7 @@ namespace Adrenth\RssFetcher\Models;
 
 use Model;
 use October\Rain\Database\Builder;
+use System\Models\File;
 
 /**
  * Class Item
@@ -47,6 +48,16 @@ class Item extends Model
      */
     public $belongsTo = [
         'source' => Source::class
+    ];
+
+    /**
+     * {@inheritdoc}
+     */
+    public $attachMany = [
+        'images' => [
+            File::class,
+            'public' => true
+        ]
     ];
 
     /**

@@ -41,6 +41,11 @@ class Items extends Controller
     /**
      * {@inheritdoc}
      */
+    public $bodyClass = 'compact-container';
+
+    /**
+     * {@inheritdoc}
+     */
     public function __construct()
     {
         parent::__construct();

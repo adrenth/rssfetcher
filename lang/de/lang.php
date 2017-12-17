@@ -67,7 +67,8 @@ return [
         'delete_confirm' => 'Bist du sicher?',
         'hide_published' => 'Veröffentlichte ausblenden',
         'publish' => 'Veröffentlicht',
-        'unpublish' => 'Unveröffentlicht'
+        'unpublish' => 'Unveröffentlicht',
+        'images' => 'Bilder',
     ],
     'feed' => [
         'feed' => 'Feed',

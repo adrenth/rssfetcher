@@ -70,6 +70,7 @@ return [
         'export_sources' => 'Exporteer bronnen',
         'publish' => 'Publiceren',
         'unpublish' => 'Niet publiceren',
+        'images' => 'Afbeeldingen',
     ],
     'feed' => [
         'feed' => 'Feed',

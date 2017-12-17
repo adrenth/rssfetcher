@@ -67,7 +67,8 @@ return [
         'delete_confirm' => 'Are you sure?',
         'hide_published' => 'Hide published',
         'publish' => 'Publish',
-        'unpublish' => 'Unpublish'
+        'unpublish' => 'Unpublish',
+        'images' => 'Images',
     ],
     'feed' => [
         'feed' => 'Feed',

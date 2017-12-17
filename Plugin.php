@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Adrenth\RssFetcher;
 
+use Adrenth\RssFetcher\Classes\Reader\Extension\Media\Entry;
 use Backend;
+use Log;
 use System\Classes\PluginBase;
+use Zend\Feed\Reader;
+use Zend\ServiceManager\ServiceManager;
 
 /**
  * Class Plugin
@@ -37,6 +41,8 @@ class Plugin extends PluginBase
             'Adrenth.RssFetcher',
             Commands\FetchRssCommand::class
         );
+
+        $this->registerFeedExtensions();
     }
 
     /**
@@ -133,5 +139,26 @@ class Plugin extends PluginBase
         return [
             FormWidgets\TextWithPrefix::class => 'textWithPrefix'
         ];
+    }
+
+    /**
+     * Register Zend Feed extensions
+     *
+     * @return void
+     */
+    public function registerFeedExtensions()
+    {
+        $service = new ServiceManager();
+
+        $extensions = new Reader\ExtensionPluginManager($service);
+        $extensions->setInvokableClass('Media\Entry', Entry::class);
+
+        Reader\Reader::setExtensionManager(new Reader\ExtensionManager($extensions));
+
+        try {
+            Reader\Reader::registerExtension('Media');
+        } catch (Reader\Exception\RuntimeException $e) {
+            Log::warning($e);
+        }
     }
 }

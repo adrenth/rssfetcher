@@ -36,3 +36,11 @@ fields:
         type: switch
         comment: adrenth.rssfetcher::lang.source.is_published_comment
         span: left
+
+secondaryTabs:
+    fields:
+        images:
+            label: adrenth.rssfetcher::lang.item.images
+            type: fileupload
+            mode: image
+            imageHeight: 250
