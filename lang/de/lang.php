@@ -49,6 +49,7 @@ return [
         'items' => 'Artikel',
         'name' => 'Name',
         'source_url' => 'Quellen-URL',
+        'source_id' => 'Quellen ID',
         'max_items' => 'Max. Artikel',
         'max_items_description' => 'Maximum der zu empfangenen Artikel aus der Quelle',
         'items_per_page' => 'Anzahl der Artikel pro Seite',

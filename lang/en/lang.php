@@ -49,6 +49,7 @@ return [
         'items' => 'Items',
         'name' => 'Name',
         'source_url' => 'Source URL',
+        'source_id' => 'Source ID',
         'max_items' => 'Max Items',
         'max_items_description' => 'Maximum items to fetch from source',
         'items_per_page' => 'Number of items per page',
