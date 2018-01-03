@@ -42,6 +42,11 @@ class Items extends ComponentBase
                 'label' => 'adrenth.rssfetcher::lang.item.max_items',
                 'type' => 'string',
                 'default' => '10'
+            ],
+            'sourceId' => [
+                'label' => 'adrenth.rssfetcher::lang.item.source_id',
+                'type' => 'string',
+                'default' => ''
             ]
         ];
     }
@@ -51,16 +56,22 @@ class Items extends ComponentBase
      */
     public function onRun()
     {
-        $this->items = self::loadItems($this->property('maxItems'));
+        $sourceId = (int) $this->property('sourceId');
+
+        $this->items = self::loadItems(
+            $this->property('maxItems'),
+            $sourceId > 0 ? $sourceId : null
+        );
     }
 
     /**
      * Load Items
      *
      * @param int $maxItems
+     * @param int $sourceId
      * @return array
      */
-    public static function loadItems($maxItems = 10): array
+    public static function loadItems($maxItems = 10, int $sourceId = null): array
     {
         try {
             $items = Item::select(['adrenth_rssfetcher_items.*', 'adrenth_rssfetcher_sources.name AS source'])
@@ -74,6 +85,10 @@ class Items extends ComponentBase
                 ->where('adrenth_rssfetcher_items.is_published', '=', 1)
                 ->orderBy('adrenth_rssfetcher_items.pub_date', 'desc')
                 ->limit($maxItems);
+
+            if ($sourceId !== null && is_numeric($sourceId)) {
+                $items->where('adrenth_rssfetcher_items.source_id', '=', (int) $sourceId);
+            }
         } catch (InvalidArgumentException $e) {
             return [];
         }

@@ -49,6 +49,7 @@ return [
         'items' => 'Items',
         'name' => 'Naam',
         'source_url' => 'Bron URL',
+        'source_id' => 'Bron ID',
         'max_items' => 'Maximum items',
         'max_items_description' => 'Maximaal aantal items om op te halen van bron',
         'items_per_page' => 'Aantal items per pagina',
