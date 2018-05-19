@@ -4,22 +4,22 @@
 
 columns:
     name:
-        label: adrenth.rssfetcher::lang.item.name
+        label: adrenth.rssfetcher::lang.source.name
         searchable: true
     source_url:
-        label: adrenth.rssfetcher::lang.item.source_url
+        label: adrenth.rssfetcher::lang.source.source_url
     max_items:
-        label: adrenth.rssfetcher::lang.item.max_items
+        label: adrenth.rssfetcher::lang.source.max_items
         type: number
     is_enabled:
-        label: adrenth.rssfetcher::lang.item.enabled
+        label: adrenth.rssfetcher::lang.source.enabled
         type: switch
     items_count:
-        label: adrenth.rssfetcher::lang.item.items_count
+        label: adrenth.rssfetcher::lang.source.items_count
         relation: items_count
         valueFrom: count
         default: 0
         sortable: false
     fetched_at:
-        label: adrenth.rssfetcher::lang.item.last_fetched
+        label: adrenth.rssfetcher::lang.source.last_fetched
         type: timesince

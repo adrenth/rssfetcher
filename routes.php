@@ -68,6 +68,16 @@ Route::get('/feeds/{path}', function ($path) {
                 $entry->addCategory(['term' => $category]);
             }
 
+            $enclosureUrl = $item->getAttribute('enclosure_url');
+
+            if (!empty($enclosureUrl)) {
+                $entry->setEnclosure([
+                    'uri' => $enclosureUrl,
+                    'type' => $item->getAttribute('enclosure_type'),
+                    'length' => $item->getAttribute('enclosure_length'),
+                ]);
+            }
+
             $feed->addEntry($entry);
         } catch (InvalidArgumentException $e) {
             continue;

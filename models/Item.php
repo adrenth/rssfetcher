@@ -31,6 +31,9 @@ class Item extends Model
         'author',
         'category',
         'comments',
+        'enclosure_url',
+        'enclosure_length',
+        'enclosure_type',
         'pub_date',
         'is_published'
     ];

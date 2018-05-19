@@ -11,6 +11,7 @@ use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Log;
+use RuntimeException;
 use Symfony\Component\Console\Input\InputArgument;
 use Zend\Feed\Reader\Entry\Rss;
 use Zend\Feed\Reader\Reader;
@@ -37,7 +38,7 @@ class FetchRssCommand extends Command
      *
      * @deprecated Will be dropped when OctoberCMS supports Laravel 5.5
      * @return void
-     * @throws \RuntimeException
+     * @throws RuntimeException
      * @throws Exception
      */
     public function handle()
@@ -81,6 +82,14 @@ class FetchRssCommand extends Command
                         'pub_date' => $dateCreated !== null ? $item->getDateCreated()->format('Y-m-d H:i:s') : null,
                         'is_published' => $source->getAttribute('publish_new_items')
                     ];
+
+                    $enclosure = $item->getEnclosure();
+
+                    if ($enclosure instanceof \stdClass) {
+                        $attributes['enclosure_url'] = $enclosure->url ?? null;
+                        $attributes['enclosure_length'] = $enclosure->length ?? null;
+                        $attributes['enclosure_type'] = $enclosure->type ?? null;
+                    }
 
                     if ($item->getAuthors() !== null && is_array($item->getAuthors())) {
                         $attributes['author'] = implode(', ', $item->getAuthors());

@@ -4,35 +4,46 @@
 
 fields:
     title:
-        label: adrenth.rssfetcher::lang.source.title
+        label: adrenth.rssfetcher::lang.item.title
         type: text
         span: left
     link:
-        label: adrenth.rssfetcher::lang.source.link
+        label: adrenth.rssfetcher::lang.item.link
         type: text
         span: right
     description:
-        label: adrenth.rssfetcher::lang.source.description
+        label: adrenth.rssfetcher::lang.item.description
         type: textarea
         size: small
     author:
-        label: adrenth.rssfetcher::lang.source.author
+        label: adrenth.rssfetcher::lang.item.author
         type: text
         span: left
     category:
-        label: adrenth.rssfetcher::lang.source.category
+        label: adrenth.rssfetcher::lang.item.category
         type: text
         span: right
     comments:
-        label: adrenth.rssfetcher::lang.source.comments
+        label: adrenth.rssfetcher::lang.item.comments
         type: text
+    enclosure_url:
+        label: adrenth.rssfetcher::lang.item.enclosure_url
+        type: text
+    enclosure_length:
+        label: adrenth.rssfetcher::lang.item.enclosure_length
+        type: text
+        span: left
+    enclosure_type:
+        label: adrenth.rssfetcher::lang.item.enclosure_type
+        type: text
+        span: right
     pub_date:
-        label: adrenth.rssfetcher::lang.source.published_at
+        label: adrenth.rssfetcher::lang.item.published_at
         type: datepicker
         mode: datetime
         span: left
     is_published:
-        label: adrenth.rssfetcher::lang.source.is_published
+        label: adrenth.rssfetcher::lang.item.is_published
         type: switch
-        comment: adrenth.rssfetcher::lang.source.is_published_comment
+        comment: adrenth.rssfetcher::lang.item.is_published_comment
         span: left
