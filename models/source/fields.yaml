@@ -4,31 +4,31 @@
 
 fields:
     name:
-        label: adrenth.rssfetcher::lang.item.name
+        label: adrenth.rssfetcher::lang.source.name
         type: text
         required: true
         span: left
     source_url:
-        label: adrenth.rssfetcher::lang.item.source_url
+        label: adrenth.rssfetcher::lang.source.source_url
         required: true
         type: text
         placeholder: http://example.com/rss.xml
         span: right
     description:
-        label: adrenth.rssfetcher::lang.item.description
+        label: adrenth.rssfetcher::lang.source.description
         type: textarea
         size: small
     max_items:
-        label: adrenth.rssfetcher::lang.item.max_items
-        comment: adrenth.rssfetcher::lang.item.max_items_description
+        label: adrenth.rssfetcher::lang.source.max_items
+        comment: adrenth.rssfetcher::lang.source.max_items_description
         default: 10
         span: left
     is_enabled:
-        label: adrenth.rssfetcher::lang.item.enabled
+        label: adrenth.rssfetcher::lang.source.enabled
         type: switch
-        comment: adrenth.rssfetcher::lang.item.enabled_comment
+        comment: adrenth.rssfetcher::lang.source.enabled_comment
         span: left
     publish_new_items:
-        label: adrenth.rssfetcher::lang.item.publish_new_items
+        label: adrenth.rssfetcher::lang.source.publish_new_items
         type: switch
         span: left

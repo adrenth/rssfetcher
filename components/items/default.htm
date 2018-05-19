@@ -13,5 +13,9 @@
         {% endif %}
 
         <p><em>Source: {{ item.source }}{% if item.author %}, {{ item.author }}{% endif %}</em></p>
+
+        {% if item.enclosure_url %}
+            <a href="{{ item.enclosure_url }}">Enclosure ({{ item.enclosure_length }} bytes / {{ item.enclosure_type }}</a>
+        {% endif %}
     </div>
 {% endfor %}

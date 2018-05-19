@@ -9,14 +9,14 @@ columns:
         relation: source
         select: name
     title:
-        label: adrenth.rssfetcher::lang.source.title
+        label: adrenth.rssfetcher::lang.item.title
         searchable: true
         type: text
     is_published:
-        label:  adrenth.rssfetcher::lang.source.is_published
+        label:  adrenth.rssfetcher::lang.item.is_published
         type: switch
     pub_date:
-        label: adrenth.rssfetcher::lang.source.published_at
+        label: adrenth.rssfetcher::lang.item.published_at
         type: datetime
     item_id:
         label: ID

@@ -25,3 +25,6 @@
 1.2.0: Add German translation (Thank you Pascal Garber)
 2.0.0: !!! Major update: Requires PHP 7.0+ and October CMS build 420+
 2.0.1: Add Source ID property to rssItems component
+2.1.0:
+  - Add support for the RSS `enclosure` sub-element
+  - add_enclosure_columns.php
