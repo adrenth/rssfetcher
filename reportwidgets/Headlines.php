@@ -60,7 +60,7 @@ class Headlines extends ReportWidgetBase
     public function render()
     {
         $this->vars['title'] = $this->property('title');
-        $this->vars['items'] = Items::loadItems($this->property('maxItems'));
+        $this->vars['items'] = Items::loadItems((int) $this->property('maxItems', 10));
         $this->vars['dateFormat'] = $this->property('dateFormat');
 
         return $this->makePartial('widget');
