@@ -59,7 +59,7 @@ class Items extends ComponentBase
         $sourceId = (int) $this->property('sourceId');
 
         $this->items = self::loadItems(
-            $this->property('maxItems'),
+            (int) $this->property('maxItems', 10),
             $sourceId > 0 ? $sourceId : null
         );
     }
@@ -71,7 +71,7 @@ class Items extends ComponentBase
      * @param int $sourceId
      * @return array
      */
-    public static function loadItems($maxItems = 10, int $sourceId = null): array
+    public static function loadItems(int $maxItems, int $sourceId = null): array
     {
         try {
             $items = Item::select(['adrenth_rssfetcher_items.*', 'adrenth_rssfetcher_sources.name AS source'])
