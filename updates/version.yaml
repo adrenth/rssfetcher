@@ -29,3 +29,4 @@
   - Add support for the RSS `enclosure` sub-element
   - add_enclosure_columns.php
 2.1.1: Fix critical issue in Dashboard Widget Headlines
+2.1.2: Fixes `open_basedir` restriction in effect issue
