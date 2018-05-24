@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Adrenth\RssFetcher\Controllers;
 
+use Adrenth\RssFetcher\Classes\RssFetcher;
 use Adrenth\RssFetcher\Exceptions\SourceNotEnabledException;
 use Adrenth\RssFetcher\Models\Source;
 use ApplicationException;
@@ -70,7 +71,8 @@ class Sources extends Controller
                 throw new SourceNotEnabledException(Lang::get('adrenth.rssfetcher::lang.source.source_not_enabled'));
             }
 
-            Artisan::call('adrenth:fetch-rss', ['source' => $this->params[0]]);
+            RssFetcher::instance()->fetch((int) $this->params[0]);
+
             Flash::success(Lang::get('adrenth.rssfetcher::lang.source.items_fetch_success'));
         } catch (SourceNotEnabledException $e) {
             Flash::warning($e->getMessage());
@@ -102,7 +104,7 @@ class Sources extends Controller
             }
 
             try {
-                Artisan::call('adrenth:fetch-rss', ['source' => $source->getAttribute('id')]);
+                RssFetcher::instance()->fetch((int) $source->getKey());
             } catch (Exception $e) {
                 Flash::error($e->getMessage());
             }

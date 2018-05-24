@@ -96,6 +96,12 @@ use Artisan;
 Artisan::call('adrenth:fetch-rss', ['source' => 2]);
 ````
 
+Or using the `RssFetcher` singleton:
+
+````
+RssFetcher::instance()->fetch(2);
+````
+
 ## Issues
 
 If you have issues using this plugin. Please create an issue or just send me an email [adrenth@gmail.com]().
